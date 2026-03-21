@@ -123,6 +123,9 @@ body { font-family: var(--cuerpo); background: var(--c3); color: var(--c5); over
 .galeria-item { overflow: hidden; aspect-ratio: 1; background: var(--c3); }
 .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
 .galeria-item:hover img { transform: scale(1.04); }
+.galeria-frase { display: flex; align-items: center; justify-content: center; padding: 32px; background: rgba(157,109,92,0.12); border: 1px solid rgba(157,109,92,0.2); }
+.galeria-frase p { font-family: var(--cursiva); font-style: italic; font-size: clamp(16px, 1.8vw, 22px); color: var(--c1); text-align: center; line-height: 1.6; }
+.galeria-frase em { color: var(--c4); font-style: italic; }
 
 /* CIERRE */
 .cierre { padding: 96px 72px 80px; max-width: 880px; margin: 0 auto; border-top: 1px solid rgba(165,183,202,0.1); }
@@ -174,7 +177,7 @@ footer { padding: 34px 72px; border-top: 1px solid rgba(165,183,202,0.1); displa
   </ul>
 </nav>
 
-<!-- HERO — foto chaqueta: presencia profesional -->
+<!-- HERO — foto-chaqueta.jpg -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-texto">
@@ -190,21 +193,21 @@ footer { padding: 34px 72px; border-top: 1px solid rgba(165,183,202,0.1); displa
     </div>
   </div>
   <div class="hero-imagen">
-    <img src="img/foto chaqueta.jpg" alt="José Manuel Simons"
-         onerror="this.src='img/foto iluminado.jpg'">
+    <img src="img/foto-chaqueta.jpg" alt="José Manuel Simons"
+         onerror="this.src='img/foto-iluminado.jpg'">
   </div>
 </section>
 
 <div class="linea"></div>
 
-<!-- QUIÉN SOY — foto iluminado: más íntima -->
+<!-- QUIÉN SOY — foto-iluminado.jpg -->
 <section class="quien aparecer" id="quien">
   <div class="quien-izq">
     <div class="quien-foto-marco">
       <img class="quien-foto"
-           src="img/foto iluminado.jpg"
+           src="img/foto-iluminado.jpg"
            alt="José Manuel Simons"
-           onerror="this.src='img/foto caribeño sombrero.jpg'">
+           onerror="this.src='img/foto-caribeno-sombrero.jpg'">
     </div>
   </div>
   <div class="quien-der">
@@ -251,13 +254,12 @@ footer { padding: 34px 72px; border-top: 1px solid rgba(165,183,202,0.1); displa
 
 <div class="linea"></div>
 
-<!-- NEWSLETTER — foto haciendo arepas: cálido, personal -->
+<!-- NEWSLETTER — foto-haciendo-arepas.jpg -->
 <section class="newsletter aparecer" id="newsletter">
   <div class="newsletter-grid">
     <div class="nl-imagen">
-      <img src="img/foto haciendo arepas.jpg"
-           alt="Caribe Austral"
-           onerror="this.src='img/foto invierno.jpg'">
+      <img src="img/foto-haciendo-arepas.jpg" alt="Caribe Austral"
+           onerror="this.src='img/foto-invierno.jpg'">
     </div>
     <div class="nl-contenido">
       <p class="etiqueta">Una vez por semana. Sin ruido.</p>
@@ -279,28 +281,26 @@ footer { padding: 34px 72px; border-top: 1px solid rgba(165,183,202,0.1); displa
 
 <div class="linea"></div>
 
-<!-- GALERÍA — paisajes + fotos contextuales -->
+<!-- GALERÍA -->
 <section class="galeria aparecer">
   <div class="galeria-grid">
     <div class="galeria-item">
-      <img src="img/paisaje patagonia.jpg" alt="Patagonia">
+      <img src="img/paisaje-patagonia.jpg" alt="Patagonia">
     </div>
     <div class="galeria-item">
-      <img src="img/foto caribeño sombrero.jpg" alt="Caribe Austral">
+      <img src="img/foto-caribeno-sombrero.jpg" alt="Caribe Austral">
     </div>
     <div class="galeria-item">
-      <img src="img/paisaje caribe austral.jpg" alt="Caribe Austral">
+      <img src="img/paisaje-caribe-austral.jpg" alt="Caribe Austral">
     </div>
     <div class="galeria-item">
-      <img src="img/foto botas bosque.jpg" alt="Patagonia">
+      <img src="img/foto-botas-bosque.jpg" alt="Patagonia">
     </div>
     <div class="galeria-item">
-      <img src="img/foto invierno.jpg" alt="Invierno Austral">
+      <img src="img/foto-invierno.jpg" alt="Invierno Austral">
     </div>
-    <div class="galeria-item" style="background: rgba(157,109,92,0.15); display:flex; align-items:center; justify-content:center; padding: 32px;">
-      <p style="font-family: var(--cursiva); font-style:italic; font-size: clamp(18px,2vw,26px); color: var(--c1); text-align:center; line-height:1.5;">
-        Desde el<br><em style="color:var(--c4)">fin del mundo</em><br>comienza todo.
-      </p>
+    <div class="galeria-item galeria-frase">
+      <p>Desde el<br><em>fin del mundo</em><br>comienza todo.</p>
     </div>
   </div>
 </section>
