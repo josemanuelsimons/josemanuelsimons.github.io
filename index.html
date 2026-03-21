@@ -419,9 +419,9 @@ footer {
     <p class="etiqueta">Dos mundos. Una voz.</p>
     <h2 class="titulo-seccion">
       El Caribe me dio el fuego.
-      <span class="titulo-cursiva">Lo Austral me enseñó cuándo encenderlo.</span>
+      <span class="titulo-cursiva">El Austral me enseñó dónde ponerlo.</span>
     </h2>
-    <p class="parrafo">Nací en Caracas en 1991 y terminé eligiendo Punta Arenas, en la Patagonia chilena, como el lugar desde donde encender la siguiente etapa. Entre medio: Derecho, <strong>activismo LGBTIQ+</strong> en una Venezuela que no estaba lista, salí junto a ocho millones de venezolanos.</p>
+    <p class="parrafo">Nací en Caracas en 1991 y terminé eligiendo Punta Arenas, en la Patagonia chilena, como el lugar desde donde encender la siguiente etapa. Entre medio: Derecho, <strong>activismo LGBTIQ+</strong> en una Venezuela que no estaba lista, ocho millones de venezolanos migrando, Chile, más Chile.</p>
     <p class="parrafo">Caribe Austral no es una marca. Es el nombre de ese recorrido. Desde aquí acompaño a <strong>líderes, migrantes y profesionales</strong> a convertir su historia en autoridad real.</p>
   </div>
 </section>
@@ -461,7 +461,7 @@ footer {
 <section class="newsletter aparecer" id="newsletter">
   <div class="newsletter-grid">
     <div class="nl-imagen">
-      <img src="img/paisaje-caribe-austral.jpg" alt="Caribe Austral"
+      <img src="img/ebook.jpg" alt="Cuaderno de Frontera — Caribe Austral"
            onerror="this.style.display='none'">
     </div>
     <div class="nl-contenido">
@@ -471,12 +471,12 @@ footer {
         <span class="titulo-cursiva">se administra.</span>
       </h2>
       <p class="parrafo">Cada martes, reflexiones sobre liderazgo, narrativa y lo que significa construir algo desde los márgenes. Sin tips de coach. Sin motivación de cartulina.</p>
-      <form class="form-nl" action="LINK_FORMULARIO" method="GET" target="_blank">
-        <input type="text" placeholder="Tu nombre">
-        <input type="email" placeholder="tu@email.com" required>
-        <button type="submit">Suscribirme &nbsp;→</button>
+      <form class="form-nl" id="form-newsletter" onsubmit="enviarSuscripcion(event)">
+        <input type="text" id="nl-nombre" placeholder="Tu nombre" required>
+        <input type="email" id="nl-email" placeholder="tu@email.com" required>
+        <button type="submit" id="nl-btn">Suscribirme &nbsp;→</button>
       </form>
-      <p class="form-nota">+ Descarga gratis el Cuaderno de Frontera al suscribirte.</p>
+      <p class="form-nota" id="nl-mensaje">+ Descarga gratis el Cuaderno de Frontera al suscribirte.</p>
     </div>
   </div>
 </section>
@@ -510,12 +510,45 @@ footer {
 </footer>
 
 <script>
+// Scroll animations
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.aparecer').forEach(el => obs.observe(el));
+
+// Newsletter → Make → Notion CRM
+const WEBHOOK_URL = 'PEGAR_URL_WEBHOOK_MAKE_AQUI';
+
+async function enviarSuscripcion(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nl-nombre').value.trim();
+  const email  = document.getElementById('nl-email').value.trim();
+  const btn    = document.getElementById('nl-btn');
+  const msg    = document.getElementById('nl-mensaje');
+
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, email, fuente: 'Landing josemanuelsimons.github.io', fecha: new Date().toISOString() })
+    });
+    btn.textContent = '¡Listo! ✓';
+    msg.textContent = 'Ya estás suscrito. Revisa tu correo — el Cuaderno llega en minutos.';
+    msg.style.color = '#a5b7ca';
+    document.getElementById('nl-nombre').value = '';
+    document.getElementById('nl-email').value = '';
+  } catch (err) {
+    btn.textContent = 'Suscribirme →';
+    btn.disabled = false;
+    msg.textContent = 'Hubo un error. Escríbeme a josemanuelsimons@gmail.com';
+    msg.style.color = '#9d6d5c';
+  }
+}
 </script>
 
 </body>
