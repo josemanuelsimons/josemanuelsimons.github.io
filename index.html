@@ -101,6 +101,20 @@ nav.nav {
 }
 .btn-fuego:hover { background-color: #b5806e; transform: translateY(-1px); }
 
+.btn-gumroad {
+  display: inline-flex; align-items: center; gap: 10px;
+  background-color: transparent;
+  border: 1px solid rgba(157,109,92,0.6);
+  color: #9d6d5c;
+  text-decoration: none; padding: 15px 28px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-gumroad:hover {
+  background-color: rgba(157,109,92,0.12);
+  border-color: #9d6d5c;
+  color: #ffffff;
+}
 .btn-borde {
   display: inline-flex; align-items: center; gap: 10px;
   border: 1px solid rgba(165,183,202,0.3); color: #a5b7ca;
@@ -396,12 +410,14 @@ footer {
     </h1>
     <p class="hero-desc">Soy José Manuel Simons — abogado, estratega de narrativas y fundador de Caribe Austral. Liderazgo, migración y construcción de autoridad desde una historia real.</p>
     <div class="hero-ctas">
-      <a href="#newsletter" class="btn-fuego">Cuaderno de Frontera &nbsp;→</a>
+      <a href="#newsletter" class="btn-fuego">Suscríbete — el Cuaderno es gratis &nbsp;→</a>
+      <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" class="btn-gumroad">Cuaderno completo — $15 USD &nbsp;→</a>
       <a href="https://anteroslegal.cl" target="_blank" class="btn-borde">Anteros Legal &nbsp;→</a>
     </div>
   </div>
   <div class="hero-imagen">
-    <img src="img/chaqueta.jpg">
+    <img src="img/foto-chaqueta.jpg" alt="José Manuel Simons"
+         onerror="this.style.display='none'">
   </div>
 </section>
 
