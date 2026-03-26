@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller Storytelling con Propósito — Caribe Austral</title>
+<meta name="description" content="Transforma tu historia en tu mayor herramienta de conexión. Taller online en vivo · 11 de julio 2026 · José Manuel Simons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-claro:  #a5b7ca;
+    --azul-medio:  #6b7d93;
+    --azul-oscuro: #25324a;
+    --terracota:   #9d6d5c;
+    --blanco:      #ffffff;
+    --crema:       #f7f4f0;
+    --suave:       #8a8278;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--crema);
+    color: var(--azul-oscuro);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(247,244,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(37,50,74,0.08);
+  }
+  .nav-marca {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 300; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--azul-oscuro); text-decoration: none;
+  }
+  .nav-cta {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blanco);
+    background: var(--terracota); border: none; cursor: pointer;
+    padding: 0.6rem 1.4rem; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--azul-oscuro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-imagen { position: relative; background: var(--azul-oscuro); overflow: hidden; }
+  .hero-imagen img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    opacity: 0.75; mix-blend-mode: luminosity; filter: contrast(1.1);
+  }
+  .hero-imagen::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--crema));
+  }
+  .hero-contenido {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5rem 5rem 4rem;
+  }
+  .hero-etiqueta {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--terracota);
+    margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-etiqueta::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--terracota); }
+  .hero-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+    font-weight: 300; line-height: 1.1; color: var(--azul-oscuro); margin-bottom: 1.8rem;
+  }
+  .hero-titulo em { font-style: italic; color: var(--terracota); }
+  .hero-subtitulo {
+    font-size: 1.05rem; font-weight: 300; color: var(--azul-medio);
+    max-width: 38ch; margin-bottom: 3rem; line-height: 1.7;
+  }
+  .hero-datos { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2.8rem; }
+  .hero-dato { display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; color: var(--azul-oscuro); }
+  .hero-dato span.icono { font-size: 1rem; width: 1.4rem; text-align: center; }
+  .hero-botones { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primario {
+    display: inline-block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blanco);
+    background: var(--terracota); padding: 1rem 2.4rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primario:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+  .btn-secundario {
+    display: inline-block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--azul-oscuro);
+    background: transparent; padding: 1rem 2.4rem;
+    text-decoration: none; border: 1px solid var(--azul-claro); transition: border-color 0.2s;
+  }
+  .btn-secundario:hover { border-color: var(--azul-oscuro); }
+
+  /* FRANJA */
+  .franja-fecha {
+    background: var(--azul-oscuro); color: var(--blanco);
+    padding: 1.4rem 3rem; display: flex; align-items: center;
+    justify-content: center; gap: 4rem; flex-wrap: wrap;
+  }
+  .franja-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+  .franja-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; line-height: 1; color: var(--azul-claro);
+  }
+  .franja-label {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+  }
+  .franja-sep { width: 1px; height: 2.5rem; background: rgba(255,255,255,0.12); }
+
+  /* SECCIONES GENÉRICAS */
+  section { padding: 6rem 0; }
+  .contenedor { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .titulo-seccion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.2; color: var(--azul-oscuro); margin-bottom: 1rem;
+  }
+  .titulo-seccion em { font-style: italic; color: var(--terracota); }
+  .bajada-seccion {
+    font-size: 1rem; font-weight: 300; color: var(--azul-medio);
+    max-width: 52ch; margin-bottom: 3.5rem; line-height: 1.75;
+  }
+
+  /* QUÉ APRENDERÁS */
+  .aprendizajes { background: var(--blanco); }
+  .aprendizajes-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0; border: 1px solid rgba(37,50,74,0.08);
+  }
+  .aprendizaje-item {
+    padding: 2.5rem 2.8rem;
+    border-right: 1px solid rgba(37,50,74,0.08);
+    border-bottom: 1px solid rgba(37,50,74,0.08);
+    transition: background 0.2s;
+  }
+  .aprendizaje-item:nth-child(2n) { border-right: none; }
+  .aprendizaje-item:nth-last-child(-n+2) { border-bottom: none; }
+  .aprendizaje-item:hover { background: var(--crema); }
+  .aprendizaje-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: var(--azul-claro); line-height: 1; margin-bottom: 1rem;
+  }
+  .aprendizaje-titulo { font-size: 0.95rem; font-weight: 500; color: var(--azul-oscuro); margin-bottom: 0.6rem; }
+  .aprendizaje-desc { font-size: 0.88rem; font-weight: 300; color: var(--azul-medio); line-height: 1.65; }
+
+  /* PARA QUIÉN */
+  .para-quien { background: var(--crema); }
+  .audiencia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .audiencia-item {
+    padding: 2rem; border: 1px solid rgba(37,50,74,0.1); background: var(--blanco);
+    position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .audiencia-item::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--terracota); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
+  }
+  .audiencia-item:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,50,74,0.08); }
+  .audiencia-item:hover::before { transform: scaleY(1); }
+  .audiencia-titulo { font-size: 0.9rem; font-weight: 500; color: var(--azul-oscuro); margin-bottom: 0.4rem; }
+  .audiencia-desc { font-size: 0.82rem; font-weight: 300; color: var(--azul-medio); line-height: 1.6; }
+
+  /* FACILITADOR */
+  .facilitador { background: var(--azul-oscuro); color: var(--blanco); overflow: hidden; position: relative; }
+  .facilitador::before {
+    content: 'JMS'; position: absolute; right: -2rem; top: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18rem; font-weight: 300; line-height: 1;
+    color: rgba(165,183,202,0.05); pointer-events: none; white-space: nowrap;
+  }
+  .facilitador-grid {
+    display: grid; grid-template-columns: auto 1fr; gap: 5rem;
+    align-items: center; position: relative; z-index: 1;
+  }
+  .facilitador-foto {
+    width: 260px; height: 320px; object-fit: cover; object-position: center top;
+    filter: grayscale(30%) contrast(1.05);
+  }
+  .facilitador-etiqueta {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--terracota); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .facilitador-etiqueta::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--terracota); }
+  .facilitador-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .facilitador-bio {
+    font-size: 0.95rem; font-weight: 300;
+    color: rgba(255,255,255,0.65); max-width: 52ch; line-height: 1.75;
+  }
+  .facilitador-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .tag {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border: 1px solid rgba(165,183,202,0.3); color: var(--azul-claro);
+  }
+
+  /* PRECIOS */
+  .precios { background: var(--crema); }
+  .precios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 700px; }
+  .precio-card {
+    padding: 2.5rem; background: var(--blanco);
+    border: 1px solid rgba(37,50,74,0.1);
+    position: relative; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .precio-card.destacado { border-color: var(--terracota); border-width: 2px; }
+  .precio-card.destacado::after {
+    content: 'Recomendado'; position: absolute; top: -1px; right: 1.5rem;
+    background: var(--terracota); color: var(--blanco);
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.25rem 0.7rem;
+  }
+  .precio-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(37,50,74,0.09); }
+  .precio-modalidad {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--suave); margin-bottom: 1.2rem;
+  }
+  .precio-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; line-height: 1; color: var(--azul-oscuro); margin-bottom: 0.2rem;
+  }
+  .precio-moneda { font-size: 1.2rem; vertical-align: top; line-height: 1.8; color: var(--terracota); }
+  .precio-usd { font-size: 0.82rem; color: var(--suave); margin-bottom: 1.2rem; }
+  .precio-incluye { font-size: 0.82rem; font-weight: 300; color: var(--azul-medio); line-height: 1.6; }
+
+  /* INSCRIPCIÓN */
+  .inscripcion {
+    background: var(--azul-oscuro); color: var(--blanco);
+    text-align: center; padding: 6rem 3rem;
+  }
+  .inscripcion .titulo-seccion { color: var(--blanco); }
+  .inscripcion .bajada-seccion { color: rgba(255,255,255,0.55); margin-left: auto; margin-right: auto; }
+  .inscripcion-cupos {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(165,183,202,0.1); border: 1px solid rgba(165,183,202,0.2);
+    padding: 0.6rem 1.4rem; margin-bottom: 2.5rem;
+    font-size: 0.78rem; letter-spacing: 0.1em; color: var(--azul-claro);
+  }
+  .inscripcion-cupos::before {
+    content: ''; display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terracota); animation: pulso 1.8s ease-in-out infinite;
+  }
+  @keyframes pulso {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+  .inscripcion-aviso {
+    display: inline-block; font-size: 0.75rem; letter-spacing: 0.1em;
+    color: var(--azul-claro); margin-top: 1.5rem;
+  }
+
+  /* FAQ */
+  .faq { background: var(--blanco); }
+  .faq-lista { max-width: 700px; }
+  .faq-item { border-bottom: 1px solid rgba(37,50,74,0.08); padding: 1.8rem 0; }
+  .faq-pregunta {
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; gap: 1rem; font-size: 0.95rem; color: var(--azul-oscuro); list-style: none;
+  }
+  .faq-pregunta::-webkit-details-marker { display: none; }
+  .faq-pregunta::after {
+    content: '+'; font-size: 1.2rem; font-weight: 300;
+    color: var(--terracota); flex-shrink: 0; transition: transform 0.2s;
+  }
+  details[open] .faq-pregunta::after { transform: rotate(45deg); }
+  .faq-respuesta {
+    font-size: 0.88rem; font-weight: 300;
+    color: var(--azul-medio); line-height: 1.7; padding-top: 1rem; max-width: 58ch;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--azul-oscuro); color: rgba(255,255,255,0.4);
+    padding: 3rem; text-align: center;
+    font-size: 0.78rem; font-weight: 300; letter-spacing: 0.06em;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--blanco); }
+  footer .footer-marca {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 300; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.6); display: block; margin-bottom: 1rem;
+  }
+
+  /* ANIMACIONES */
+  .aparecer { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .aparecer.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-imagen { height: 50vw; }
+    .hero-imagen::after { background: linear-gradient(to bottom, transparent 60%, var(--crema)); }
+    .hero-contenido { padding: 4rem 2rem 3rem; }
+    .facilitador-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .facilitador-foto { width: 100%; height: 280px; }
+    .aprendizajes-grid { grid-template-columns: 1fr; }
+    .aprendizaje-item { border-right: none; }
+    .aprendizaje-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(37,50,74,0.08); }
+    .aprendizaje-item:last-child { border-bottom: none; }
+    .audiencia-grid { grid-template-columns: 1fr 1fr; }
+    .precios-grid { grid-template-columns: 1fr; }
+    .franja-fecha { gap: 2rem; }
+    nav { padding: 1rem 1.5rem; }
+    .contenedor { padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+  }
+  @media (max-width: 580px) {
+    .audiencia-grid { grid-template-columns: 1fr; }
+    .hero-botones { flex-direction: column; }
+    .btn-primario, .btn-secundario { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://josemanuelsimons.github.io" class="nav-marca">Caribe Austral</a>
+  <a href="#inscripcion" class="nav-cta">Inscribirme</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-imagen">
+    <img src="img/foto-iluminado.jpg" alt="José Manuel Simons">
+  </div>
+  <div class="hero-contenido aparecer">
+    <div class="hero-etiqueta">Taller Online · 11 julio 2026</div>
+    <h1 class="hero-titulo">Storytelling<br>con <em>Propósito</em></h1>
+    <p class="hero-subtitulo">Transforma tu historia en tu mayor herramienta de conexión, impacto y liderazgo.</p>
+    <div class="hero-datos">
+      <div class="hero-dato"><span class="icono">📅</span> Sábado 11 de julio de 2026</div>
+      <div class="hero-dato"><span class="icono">⏰</span> 10:00 hrs Chile · UTC-3</div>
+      <div class="hero-dato"><span class="icono">⏱</span> 90 minutos en vivo · Zoom</div>
+      <div class="hero-dato"><span class="icono">🎯</span> Cupos limitados · 25 participantes</div>
+    </div>
+    <div class="hero-botones">
+      <a href="#inscripcion" class="btn-primario">Quiero mi lugar →</a>
+      <a href="#que-aprenderas" class="btn-secundario">Ver programa</a>
+    </div>
+  </div>
+</section>
+
+<!-- FRANJA -->
+<div class="franja-fecha">
+  <div class="franja-item">
+    <div class="franja-valor">11 Jul</div>
+    <div class="franja-label">Fecha</div>
+  </div>
+  <div class="franja-sep"></div>
+  <div class="franja-item">
+    <div class="franja-valor">90 min</div>
+    <div class="franja-label">Duración</div>
+  </div>
+  <div class="franja-sep"></div>
+  <div class="franja-item">
+    <div class="franja-valor">Online</div>
+    <div class="franja-label">Formato · Zoom</div>
+  </div>
+  <div class="franja-sep"></div>
+  <div class="franja-item">
+    <div class="franja-valor">$70k</div>
+    <div class="franja-label">CLP · desde</div>
+  </div>
+  <div class="franja-sep"></div>
+  <div class="franja-item">
+    <div class="franja-valor">25</div>
+    <div class="franja-label">Cupos máximos</div>
+  </div>
+</div>
+
+<!-- QUÉ APRENDERÁS -->
+<section class="aprendizajes" id="que-aprenderas">
+  <div class="contenedor">
+    <div class="aparecer">
+      <h2 class="titulo-seccion">Lo que vas a<br><em>llevarte</em></h2>
+      <p class="bajada-seccion">90 minutos prácticos. Nada de teoría flotando en el aire. Todo lo que aprendas lo puedes usar desde el día siguiente.</p>
+    </div>
+    <div class="aprendizajes-grid aparecer">
+      <div class="aprendizaje-item">
+        <div class="aprendizaje-num">01</div>
+        <div class="aprendizaje-titulo">Autoconocimiento narrativo</div>
+        <div class="aprendizaje-desc">Identifica tu narrativa raíz — valores, experiencias, propósito — y reconoce qué te hace irreemplazable.</div>
+      </div>
+      <div class="aprendizaje-item">
+        <div class="aprendizaje-num">02</div>
+        <div class="aprendizaje-titulo">La alquimia del relato</div>
+        <div class="aprendizaje-desc">Convierte experiencias personales en mensajes con peso real. No toda historia impacta — aprende cuáles sí.</div>
+      </div>
+      <div class="aprendizaje-item">
+        <div class="aprendizaje-num">03</div>
+        <div class="aprendizaje-titulo">Arquitectura de una historia que conecta</div>
+        <div class="aprendizaje-desc">La estructura invisible que tienen todas las historias que funcionan: inicio, conflicto, transformación, cierre.</div>
+      </div>
+      <div class="aprendizaje-item">
+        <div class="aprendizaje-num">04</div>
+        <div class="aprendizaje-titulo">De la palabra al contenido digital</div>
+        <div class="aprendizaje-desc">Traduce tu narrativa a reels, posts, LinkedIn y correos. Con autenticidad, no con fórmulas copiadas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien" id="para-quien">
+  <div class="contenedor">
+    <div class="aparecer">
+      <h2 class="titulo-seccion">¿Este taller<br>es para <em>ti</em>?</h2>
+      <p class="bajada-seccion">Para quien tiene algo real que decir y todavía no sabe cómo decirlo de forma que le importe a quien tiene que importarle.</p>
+    </div>
+    <div class="audiencia-grid aparecer">
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Profesional joven</div>
+        <div class="audiencia-desc">Quieres diferenciarte en tu industria sin sonar como todos los demás.</div>
+      </div>
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Líder o activista</div>
+        <div class="audiencia-desc">Buscas amplificar tu mensaje y que llegue más lejos que tu red actual.</div>
+      </div>
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Creador de contenido</div>
+        <div class="audiencia-desc">Quieres conectar con autenticidad real, no con tendencias prestadas.</div>
+      </div>
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Comunicador</div>
+        <div class="audiencia-desc">Necesitas herramientas narrativas estratégicas para lo que ya estás haciendo.</div>
+      </div>
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Migrante o emprendedor social</div>
+        <div class="audiencia-desc">Quieres posicionar tu historia y que el origen sea una ventaja, no un obstáculo.</div>
+      </div>
+      <div class="audiencia-item">
+        <div class="audiencia-titulo">Cualquiera con una historia real</div>
+        <div class="audiencia-desc">Si tienes algo que viviste y todavía no sabes cómo contarlo — este es el espacio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITADOR -->
+<section class="facilitador">
+  <div class="contenedor">
+    <div class="facilitador-grid aparecer">
+      <img src="img/foto-chaqueta.jpg" alt="José Manuel Simons" class="facilitador-foto">
+      <div>
+        <div class="facilitador-etiqueta">Facilitador</div>
+        <h2 class="facilitador-nombre">José Manuel<br>Simons</h2>
+        <p class="facilitador-bio">
+          Abogado migratorio y fundador de Caribe Austral. Desde Punta Arenas, trabaja con líderes, migrantes y profesionales latinoamericanos para que sus historias dejen de ser personales y se conviertan en herramientas de autoridad, conexión e impacto real.
+        </p>
+        <div class="facilitador-tags">
+          <span class="tag">Narrativa</span>
+          <span class="tag">Liderazgo</span>
+          <span class="tag">Marca Personal</span>
+          <span class="tag">Derecho Migratorio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios" id="precios">
+  <div class="contenedor">
+    <div class="aparecer">
+      <h2 class="titulo-seccion">Tu <em>inversión</em></h2>
+      <p class="bajada-seccion">Cupos limitados a 25 participantes para garantizar calidad real de interacción.</p>
+    </div>
+    <div class="precios-grid aparecer">
+      <div class="precio-card">
+        <div class="precio-modalidad">Taller en vivo</div>
+        <div class="precio-valor"><span class="precio-moneda">$</span>70.000 <small style="font-size:0.9rem;color:var(--suave)">CLP</small></div>
+        <div class="precio-usd">≈ <strong>$80 USD</strong></div>
+        <div class="precio-incluye">Acceso completo al taller en vivo por Zoom.</div>
+      </div>
+      <div class="precio-card destacado">
+        <div class="precio-modalidad">Taller + grabación</div>
+        <div class="precio-valor"><span class="precio-moneda">$</span>90.000 <small style="font-size:0.9rem;color:var(--suave)">CLP</small></div>
+        <div class="precio-usd">≈ <strong>$100 USD</strong></div>
+        <div class="precio-incluye">Taller en vivo + grabación completa + recursos descargables.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIPCIÓN -->
+<section class="inscripcion" id="inscripcion">
+  <div class="contenedor">
+    <div class="inscripcion-cupos aparecer">25 cupos · plazas limitadas</div>
+    <h2 class="titulo-seccion aparecer">Asegura tu<br><em>lugar ahora</em></h2>
+    <p class="bajada-seccion aparecer">Las inscripciones abren el 17 de junio. Deja tu nombre y email y te aviso en cuanto el link de pago esté activo.</p>
+
+    <form id="form-taller" class="aparecer" onsubmit="enviarTaller(event)"
+      style="max-width:420px;margin:0 auto 1.5rem;display:flex;flex-direction:column;gap:0.85rem;">
+      <input type="text" id="t-nombre" name="nombre" required placeholder="Tu nombre"
+        style="padding:0.9rem 1.2rem;background:rgba(255,255,255,0.08);border:1px solid rgba(165,183,202,0.25);color:var(--blanco);font-family:inherit;font-size:0.92rem;outline:none;transition:border 0.2s;"
+        onfocus="this.style.borderColor='rgba(165,183,202,0.6)'"
+        onblur="this.style.borderColor='rgba(165,183,202,0.25)'">
+      <input type="email" id="t-email" name="email" required placeholder="Tu correo electronico"
+        style="padding:0.9rem 1.2rem;background:rgba(255,255,255,0.08);border:1px solid rgba(165,183,202,0.25);color:var(--blanco);font-family:inherit;font-size:0.92rem;outline:none;transition:border 0.2s;"
+        onfocus="this.style.borderColor='rgba(165,183,202,0.6)'"
+        onblur="this.style.borderColor='rgba(165,183,202,0.25)'">
+      <button type="submit" id="t-btn" class="btn-primario"
+        style="border:none;cursor:pointer;font-family:inherit;width:100%;">
+        Reservar mi lugar - Es gratis
+      </button>
+      <p id="t-msg" style="font-size:0.82rem;color:var(--azul-claro);min-height:1.2rem;text-align:center;"></p>
+    </form>
+
+    <span class="inscripcion-aviso">El link de pago se activa el 17 de junio junto a la convocatoria oficial.</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="contenedor">
+    <div class="aparecer">
+      <h2 class="titulo-seccion">Preguntas<br><em>frecuentes</em></h2>
+    </div>
+    <div class="faq-lista aparecer">
+      <details class="faq-item">
+        <summary class="faq-pregunta">Necesito experiencia previa en storytelling?</summary>
+        <p class="faq-respuesta">No. El taller esta disenado para nivel introductorio-intermedio. Solo necesitas ganas de explorar tu historia y trabajar con ella.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-pregunta">Quedara grabado?</summary>
+        <p class="faq-respuesta">El taller es en vivo para maximizar la interaccion. Si te inscribes en la modalidad con grabacion ($90.000 CLP / $100 USD), recibiras el video completo despues del evento.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-pregunta">Que necesito tener preparado?</summary>
+        <p class="faq-respuesta">Solo tu disposicion a participar, un cuaderno para tomar notas y ganas de trabajar en tus propias historias. Sin preparacion tecnica requerida.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-pregunta">Como recibo el link de Zoom?</summary>
+        <p class="faq-respuesta">Recibiras el link de acceso por email al confirmar tu inscripcion y pago. Tambien te llegara un recordatorio 24 horas antes del taller.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-pregunta">Puedo pagar en CLP o en USD?</summary>
+        <p class="faq-respuesta">Puedes pagar en cualquiera de los dos. Para Chile: $70.000 CLP (en vivo) o $90.000 CLP (con grabacion). Para el resto de Latinoamerica: $80 USD o $100 USD.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-pregunta">Hay acceso anticipado para suscriptores del newsletter?</summary>
+        <p class="faq-respuesta">Si. Si ya eres suscriptor de Caribe Austral, recibiras el link de inscripcion antes que el publico general el 17 de junio. Suscribete en la pagina principal.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-marca">Caribe Austral</span>
+  <p>
+    <a href="https://josemanuelsimons.github.io">josemanuelsimons.github.io</a>
+    &nbsp;&middot;&nbsp;
+    <a href="mailto:josemanuelsimons@gmail.com">josemanuelsimons@gmail.com</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.instagram.com/josemanuelsimons" target="_blank" rel="noopener">@josemanuelsimons</a>
+  </p>
+  <p style="margin-top:0.8rem;font-size:0.72rem;">Narrativas con proposito desde Punta Arenas, Chile</p>
+</footer>
+
+<script>
+async function enviarTaller(e) {
+  e.preventDefault();
+  var btn    = document.getElementById('t-btn');
+  var msg    = document.getElementById('t-msg');
+  var nombre = document.getElementById('t-nombre').value.trim();
+  var email  = document.getElementById('t-email').value.trim();
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  msg.textContent = '';
+  try {
+    await fetch('https://hook.us2.make.com/hajqqqawmlyh7dh9ilx7acjgmwo3wo86', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({nombre: nombre, email: email, fuente: 'Taller Landing'})
+    });
+    btn.textContent = 'Listo! Te escribo pronto.';
+    document.getElementById('t-nombre').value = '';
+    document.getElementById('t-email').value  = '';
+    msg.textContent = 'Recibiras un email de confirmacion en breve.';
+  } catch(err) {
+    btn.textContent = 'Reservar mi lugar - Es gratis';
+    btn.disabled = false;
+    msg.textContent = 'Hubo un error. Intenta de nuevo.';
+  }
+}
+
+var elementos = document.querySelectorAll('.aparecer');
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry, i) {
+    if (entry.isIntersecting) {
+      setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
+      obs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+elementos.forEach(function(el) { obs.observe(el); });
+</script>
+
+</body>
+</html>
