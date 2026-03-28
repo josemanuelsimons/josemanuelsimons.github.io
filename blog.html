@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Caribe Austral · Narrativa, Liderazgo y Marca Personal desde Punta Arenas</title>
+<meta name="description" content="Reflexiones sobre liderazgo migrante, narrativa personal, marca desde los márgenes y derecho migratorio en Chile. Por José Manuel Simons desde Punta Arenas.">
+<meta name="keywords" content="blog liderazgo migrante Chile, narrativa personal latinoamerica, marca personal desde cero, storytelling propósito, Caribe Austral blog, José Manuel Simons">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://josemanuelsimons.github.io/blog.html">
+<meta property="og:type" content="blog">
+<meta property="og:url" content="https://josemanuelsimons.github.io/blog.html">
+<meta property="og:title" content="Blog — Caribe Austral">
+<meta property="og:description" content="Narrativa, liderazgo y marca personal desde Punta Arenas. Por José Manuel Simons.">
+<meta property="og:image" content="https://josemanuelsimons.github.io/img/og-image.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Blog Caribe Austral","url":"https://josemanuelsimons.github.io/blog.html","author":{"@type":"Person","name":"José Manuel Simons","url":"https://josemanuelsimons.github.io"},"inLanguage":"es"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#25324a;--azul-m:#6b7d93;--azul-c:#a5b7ca;
+  --tierra:#9d6d5c;--tierra-c:#b8896e;
+  --oro:#c9a96e;--oro-c:#dfc195;
+  --blanco:#ffffff;
+  --c:#1e2d42;--cm:#2a3d55;
+  --borde:rgba(201,169,110,.18);--borde-s:rgba(165,183,202,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--azul);color:var(--blanco);overflow-x:hidden;line-height:1.6}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.3rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(37,50,74,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--borde-s)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:.73rem;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--azul-c);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.activo{color:var(--oro)}
+.nav-cta{font-size:.7rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--azul);background:var(--oro);padding:.55rem 1.5rem;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HEADER */
+.blog-header{padding:10rem 3rem 5rem;position:relative;overflow:hidden;background:var(--c);border-bottom:1px solid var(--borde)}
+.blog-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,169,110,.06) 0%,transparent 55%)}
+.blog-header-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:.67rem;font-weight:500;letter-spacing:.27em;text-transform:uppercase;color:var(--oro);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--oro)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--tierra-c)}
+.header-desc{font-size:1rem;font-weight:300;color:var(--azul-c);max-width:55ch;line-height:1.8}
+
+/* FILTROS */
+.filtros{background:var(--azul);border-bottom:1px solid var(--borde-s);padding:1.2rem 3rem;position:sticky;top:65px;z-index:50}
+.filtros-inner{max-width:1160px;margin:0 auto;display:flex;gap:.75rem;flex-wrap:wrap}
+.filtro{font-size:.67rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--azul-m);padding:.38rem 1rem;border:1px solid rgba(107,125,147,.2);background:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.filtro:hover,.filtro.activo{color:var(--oro);border-color:var(--oro)}
+
+/* LAYOUT */
+.contenedor{max-width:1160px;margin:0 auto;padding:0 3rem}
+.blog-layout{display:grid;grid-template-columns:2fr 1fr;gap:4rem;padding:5rem 0}
+
+/* POST DESTACADO */
+.post-destacado{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--c);border:1px solid var(--borde);margin-bottom:3rem;text-decoration:none;color:inherit;transition:border-color .25s}
+.post-destacado:hover{border-color:rgba(201,169,110,.45)}
+.post-dest-img{background:var(--cm);min-height:260px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.5rem}
+.post-dest-img::before{content:attr(data-tema);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(201,169,110,.06);white-space:nowrap}
+/* Línea oro en la imagen al hover */
+.post-destacado:hover .post-dest-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--oro)}
+.post-dest-cat{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--oro);position:relative;z-index:1}
+.post-dest-contenido{padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:center;gap:.8rem}
+.post-dest-tipo{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tierra-c)}
+.post-dest-titulo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--blanco);line-height:1.25}
+.post-dest-excerpt{font-size:.83rem;font-weight:300;color:var(--azul-c);line-height:1.7}
+.post-dest-meta{font-size:.65rem;font-weight:400;color:var(--azul-m);letter-spacing:.06em}
+.post-dest-leer{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-top:.5rem;display:flex;align-items:center;gap:.4rem}
+.post-dest-leer::after{content:'→';transition:transform .2s}
+.post-destacado:hover .post-dest-leer::after{transform:translateX(4px)}
+
+/* LISTA */
+.posts-lista{display:flex;flex-direction:column;gap:1px;background:var(--borde)}
+.post-item{padding:1.8rem 2.2rem;background:var(--azul);text-decoration:none;color:inherit;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;transition:background .2s;position:relative}
+.post-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--oro);transform:scaleY(0);transition:transform .3s}
+.post-item:hover{background:var(--c)}
+.post-item:hover::before{transform:scaleY(1)}
+.post-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:rgba(201,169,110,.18);width:2.5rem;text-align:right;flex-shrink:0}
+.post-cat{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--tierra-c);margin-bottom:.25rem}
+.post-titulo{font-size:1rem;font-weight:400;color:var(--blanco);line-height:1.35;margin-bottom:.3rem}
+.post-excerpt{font-size:.8rem;font-weight:300;color:var(--azul-c);line-height:1.6}
+.post-meta{font-size:.62rem;color:var(--azul-m);white-space:nowrap;text-align:right}
+.arrow{font-size:.9rem;color:rgba(201,169,110,.25);transition:transform .2s,color .2s}
+.post-item:hover .arrow{transform:translateX(4px);color:var(--oro)}
+
+/* PAGINACIÓN */
+.paginacion{display:flex;gap:1px;margin-top:3rem;background:var(--borde)}
+.pag-item{padding:.9rem 1.3rem;background:var(--azul);font-size:.7rem;font-weight:400;letter-spacing:.08em;color:var(--azul-m);cursor:pointer;transition:all .2s;text-decoration:none}
+.pag-item:hover,.pag-item.activo{background:var(--c);color:var(--oro)}
+
+/* SIDEBAR */
+.sw-titulo{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--borde)}
+.sidebar-widget{margin-bottom:2.5rem}
+
+/* Newsletter widget */
+.nl-widget{background:var(--c);padding:2rem;border:1px solid var(--borde)}
+.nl-titulo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--blanco);line-height:1.3;margin-bottom:.8rem}
+.nl-desc{font-size:.8rem;font-weight:300;color:var(--azul-c);line-height:1.6;margin-bottom:1.2rem}
+.nl-form{display:flex;flex-direction:column;gap:.6rem}
+.nl-input{background:var(--azul);border:1px solid rgba(107,125,147,.25);padding:.75rem 1rem;font-size:.8rem;color:var(--blanco);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.nl-input:focus{border-color:var(--oro)}
+.nl-input::placeholder{color:var(--azul-m)}
+.nl-btn{background:var(--oro);color:var(--azul);border:none;padding:.75rem 1rem;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s}
+.nl-btn:hover{opacity:.88}
+
+/* Categorías */
+.cats{display:flex;flex-direction:column;gap:.3rem}
+.cat-link{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(165,183,202,.06);text-decoration:none;transition:color .2s}
+.cat-link:hover{color:var(--oro)}
+.cat-nombre{font-size:.82rem;font-weight:300;color:var(--azul-c)}
+.cat-count{font-size:.68rem;color:var(--azul-m)}
+.cat-link:hover .cat-nombre{color:var(--oro)}
+
+/* Cuaderno CTA */
+.cuaderno-cta{background:var(--cm);padding:1.8rem;border-left:2px solid var(--oro)}
+.cc-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin-bottom:.5rem}
+.cc-titulo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--blanco);line-height:1.3;margin-bottom:.5rem}
+.cc-desc{font-size:.78rem;font-weight:300;color:var(--azul-c);line-height:1.6;margin-bottom:1rem}
+.cc-btn{display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);background:var(--oro);padding:.65rem 1rem;text-align:center;text-decoration:none;transition:opacity .2s}
+.cc-btn:hover{opacity:.88}
+
+/* FOOTER */
+footer{background:var(--azul);border-top:1px solid rgba(165,183,202,.08);padding:3rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.fl{font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--azul-m);text-decoration:none;transition:color .2s}
+.fl:hover{color:var(--oro)}
+.flinks{display:flex;gap:1.8rem;list-style:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.flinks a{color:var(--azul-m);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--oro)}
+.fr{text-align:right;font-size:.68rem;color:var(--azul-m);line-height:1.8}
+
+.r{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.r.v{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+
+@media(max-width:1024px){.blog-layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;gap:2rem}.sidebar-widget{margin-bottom:0}}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  .contenedor{padding:0 1.5rem}
+  .blog-header{padding:8rem 1.5rem 3rem}
+  .filtros{padding:1rem 1.5rem}
+  .post-destacado{grid-template-columns:1fr}.post-dest-img{min-height:180px}
+  .post-item{grid-template-columns:auto 1fr}.post-meta{display:none}
+  .sidebar{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;text-align:center}.fr{text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Caribe Austral</a>
+  <ul class="nav-links">
+    <li><a href="/sobre-mi.html">Sobre mí</a></li>
+    <li><a href="/blog.html" class="activo">Blog</a></li>
+    <li><a href="/taller">Taller</a></li>
+    <li><a href="/holos">Círculo Holos</a></li>
+    <li><a href="https://anteroslegal.cl" target="_blank" rel="noopener">Anteros Legal ↗</a></li>
+  </ul>
+  <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" rel="noopener" class="nav-cta">Cuaderno $15 USD</a>
+</nav>
+
+<div class="blog-header">
+  <div class="blog-header-inner">
+    <p class="eyebrow r">Ideas desde el margen</p>
+    <h1 class="r d1">Narrativa, liderazgo<br>y la vida <em>construida</em><br>desde el fin del mundo.</h1>
+    <p class="header-desc r d2">Reflexiones sobre marca personal, migración, derecho y storytelling. Escritas desde Punta Arenas, pensadas para quien construye desde donde nadie esperaba.</p>
+  </div>
+</div>
+
+<div class="filtros">
+  <div class="filtros-inner">
+    <button class="filtro activo">Todos</button>
+    <button class="filtro">Narrativa</button>
+    <button class="filtro">Liderazgo</button>
+    <button class="filtro">Migración</button>
+    <button class="filtro">Marca Personal</button>
+    <button class="filtro">Newsletter</button>
+    <button class="filtro">Derecho Migratorio</button>
+  </div>
+</div>
+
+<div class="contenedor">
+  <div class="blog-layout">
+    <div class="posts-main">
+      <!-- POST DESTACADO -->
+      <a href="#" class="post-destacado r">
+        <div class="post-dest-img" data-tema="FRONTERA">
+          <span class="post-dest-cat">Newsletter #001</span>
+        </div>
+        <div class="post-dest-contenido">
+          <div class="post-dest-tipo">Narrativa · Presentación</div>
+          <div class="post-dest-titulo">No llegué al sur. Llegué a mí.</div>
+          <div class="post-dest-excerpt">La primera entrega del newsletter de Caribe Austral. Por qué construir desde el fin del mundo no es una metáfora — es una decisión.</div>
+          <div class="post-dest-meta">19 mayo 2026 · 5 min lectura</div>
+          <div class="post-dest-leer">Leer entrada</div>
+        </div>
+      </a>
+
+      <!-- LISTA -->
+      <div class="posts-lista r d1">
+        <a href="#" class="post-item">
+          <div class="post-num">02</div>
+          <div class="post-info"><div class="post-cat">Newsletter #002 · Liderazgo</div><div class="post-titulo">La grieta que te hace mejor líder</div><div class="post-excerpt">Vulnerabilidad estratégica no es desangrarse en público. Es elegir qué grieta mostrás, cómo, y cuándo.</div></div>
+          <div class="post-meta">26 may 2026<br>4 min</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="#" class="post-item">
+          <div class="post-num">03</div>
+          <div class="post-info"><div class="post-cat">Newsletter #003 · Narrativa</div><div class="post-titulo">Narrar es resistir</div><div class="post-excerpt">El storytelling no es solo herramienta de marketing. Es un acto político para quien construye desde los márgenes.</div></div>
+          <div class="post-meta">2 jun 2026<br>5 min</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="#" class="post-item">
+          <div class="post-num">04</div>
+          <div class="post-info"><div class="post-cat">Marca Personal · Original</div><div class="post-titulo">Por qué LinkedIn odia a los migrantes (y cómo ganarle)</div><div class="post-excerpt">El algoritmo de LinkedIn fue diseñado para perfiles lineales. Aquí está la estrategia para quienes vienen de otro mundo.</div></div>
+          <div class="post-meta">Próximamente</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="#" class="post-item">
+          <div class="post-num">05</div>
+          <div class="post-info"><div class="post-cat">Derecho Migratorio · Guía</div><div class="post-titulo">Cómo regularizar tu situación migratoria en Chile en 2026</div><div class="post-excerpt">Guía práctica sobre visas temporarias, residencia definitiva y reunificación familiar. Lo que nadie te explica en los formularios.</div></div>
+          <div class="post-meta">Próximamente</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="#" class="post-item">
+          <div class="post-num">06</div>
+          <div class="post-info"><div class="post-cat">Liderazgo · Reflexión</div><div class="post-titulo">El carisma caribeño no es ruido. Es presencia que no pide permiso.</div><div class="post-excerpt">Del Cuaderno de Frontera al blog. Cómo el fuego cultural se convierte en ventaja competitiva cuando sabes dónde ponerlo.</div></div>
+          <div class="post-meta">Próximamente</div>
+          <div class="arrow">→</div>
+        </a>
+      </div>
+
+      <div class="paginacion r d2">
+        <a href="#" class="pag-item activo">01</a>
+        <a href="#" class="pag-item">02</a>
+        <a href="#" class="pag-item">03</a>
+        <a href="#" class="pag-item">Siguiente →</a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-widget r">
+        <div class="nl-widget">
+          <div class="sw-titulo">Newsletter semanal</div>
+          <div class="nl-titulo">Una idea real,<br>cada martes.</div>
+          <div class="nl-desc">El newsletter de Caribe Austral. Narrativa, liderazgo y marca personal. Sin spam. Sin fórmulas vacías.</div>
+          <div class="nl-form">
+            <input type="email" placeholder="tu@email.com" class="nl-input">
+            <button class="nl-btn">Suscribirse</button>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-widget r d1">
+        <div class="sw-titulo">Categorías</div>
+        <div class="cats">
+          <a href="#" class="cat-link"><span class="cat-nombre">Narrativa Personal</span><span class="cat-count">8</span></a>
+          <a href="#" class="cat-link"><span class="cat-nombre">Liderazgo</span><span class="cat-count">6</span></a>
+          <a href="#" class="cat-link"><span class="cat-nombre">Migración en Chile</span><span class="cat-count">5</span></a>
+          <a href="#" class="cat-link"><span class="cat-nombre">Marca Personal</span><span class="cat-count">4</span></a>
+          <a href="#" class="cat-link"><span class="cat-nombre">Derecho Migratorio</span><span class="cat-count">3</span></a>
+          <a href="#" class="cat-link"><span class="cat-nombre">Newsletter</span><span class="cat-count">12</span></a>
+        </div>
+      </div>
+      <div class="sidebar-widget r d1">
+        <div class="cuaderno-cta">
+          <div class="cc-label">Activo ahora</div>
+          <div class="cc-titulo">Cuaderno de Frontera</div>
+          <div class="cc-desc">8 capítulos sobre carisma, migración y liderazgo. $15 USD — sin suscripción.</div>
+          <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" rel="noopener" class="cc-btn">Obtener $15 USD ↗</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="fl">Caribe Austral</a>
+  <ul class="flinks">
+    <li><a href="/sobre-mi.html">Sobre mí</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/taller">Taller</a></li>
+    <li><a href="/holos">Círculo Holos</a></li>
+    <li><a href="https://anteroslegal.cl" target="_blank" rel="noopener">Anteros Legal</a></li>
+  </ul>
+  <div class="fr">Punta Arenas, Chile · @josemanuelsimons<br><span style="color:rgba(165,183,202,.5)">josemanuelsimons@gmail.com</span></div>
+</footer>
+<script>
+document.querySelectorAll('.filtro').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));this.classList.add('activo');});});
+const obs=new IntersectionObserver((e)=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('v'),i*55);obs.unobserve(en.target);}});},{threshold:.06});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
