@@ -219,9 +219,6 @@ footer{background:var(--azul);border-top:1px solid rgba(165,183,202,.08);padding
   <a href="/" class="nav-logo">Caribe Austral</a>
   <ul class="nav-links">
     <li><a href="/sobre-mi.html">Sobre mí</a></li>
-    <li><a href="/blog.html">Blog</a></li>
-    <li><a href="/taller">Taller</a></li>
-    <li><a href="/holos">Círculo Holos</a></li>
     <li><a href="https://anteroslegal.cl" target="_blank" rel="noopener">Anteros Legal ↗</a></li>
   </ul>
   <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" rel="noopener" class="nav-cta">Cuaderno $15 USD</a>
@@ -397,7 +394,6 @@ footer{background:var(--azul);border-top:1px solid rgba(165,183,202,.08);padding
   <p class="r d1">Empieza con el Cuaderno. Sigue con el newsletter. Lo que venga después, lo decidimos juntos.</p>
   <div class="ctabtns r d2">
     <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" rel="noopener" class="bp">Cuaderno de Frontera — $15 USD</a>
-    <a href="/blog.html" class="bs">Leer el blog</a>
   </div>
 </div>
 
@@ -405,9 +401,6 @@ footer{background:var(--azul);border-top:1px solid rgba(165,183,202,.08);padding
   <a href="/" class="fl">Caribe Austral</a>
   <ul class="flinks">
     <li><a href="/sobre-mi.html">Sobre mí</a></li>
-    <li><a href="/blog.html">Blog</a></li>
-    <li><a href="/taller">Taller</a></li>
-    <li><a href="/holos">Círculo Holos</a></li>
     <li><a href="https://anteroslegal.cl" target="_blank" rel="noopener">Anteros Legal</a></li>
   </ul>
   <div class="fr">Punta Arenas, Chile · @josemanuelsimons<br><span style="color:rgba(165,183,202,.5)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1973766a7c7478776c7c756a707476776a597e74787075377a7674">[email&#160;protected]</a></span></div>
@@ -437,7 +430,6 @@ document.querySelectorAll('.r').forEach(el => obs.observe(el));
     // Validación básica de email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       e.preventDefault();
-      msgErr.textContent = 'Por favor ingresa un correo válido.';
       msgErr.style.display = 'block';
       msgOk.style.display = 'none';
       return;
