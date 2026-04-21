@@ -68,7 +68,8 @@
     flex: 1;
     justify-content: center;
   }
-  .topbar-nav a {
+  .topbar-nav a,
+  .topbar-nav-link {
     font-size: 11px;
     letter-spacing: .15em;
     color: rgba(253,250,245,.65);
@@ -78,7 +79,8 @@
     white-space: nowrap;
     cursor: none;
   }
-  .topbar-nav a:hover { color: var(--oro); }
+  .topbar-nav a:hover,
+  .topbar-nav-link:hover { color: var(--oro); }
   @media (max-width: 480px) { .topbar-nav { display: none; } }
 
   /* HERO */
@@ -633,8 +635,8 @@
   <div class="topbar-nav">
     <a href="https://josemanuelsimons.github.io/sobre-mi.html" target="_blank">Sobre mí</a>
     <a href="https://anteroslegal.cl" target="_blank">Anteros Legal</a>
-    <a href="#servicios" class="nav-scroll">Servicios</a>
-    <a href="#suscribirse" class="nav-scroll">Newsletter</a>
+    <a href="#servicios" class="topbar-nav-link nav-scroll">Servicios</a>
+    <a href="#suscribirse" class="topbar-nav-link nav-scroll">Newsletter</a>
   </div>
   <a href="#servicios" class="topbar-btn nav-scroll">Trabajemos →</a>
 </nav>
@@ -740,24 +742,26 @@
         <div>
           <div class="sf-precio">$60 USD <span>· 60 min</span></div>
           <div class="sf-nombre">Asesoría Express</div>
-          <div class="sf-nicho">Para líderes, emprendedores y marcas personales</div>
-          <div class="sf-desc">
-            Una sola sesión. Diagnóstico preciso, dirección clara, acción inmediata. Trabajo contigo en posicionamiento, narrativa, planificación estratégica o toma de decisiones críticas.
+          <div class="sf-nicho">Líderes · Emprendedores · Marcas personales</div>
+          <div class="sf-desc">Una sesión. Diagnóstico preciso y hoja de ruta concreta en narrativa, posicionamiento o dirección estratégica.</div>
+          <div class="sf-resultado">
+            <strong>¿Qué obtienes?</strong>
+            Sales sabiendo quién eres, qué ofreces y cómo comunicarlo.
           </div>
           <a href="https://calendly.com/josemanuelsimons/asesoria-express-caribe-austral" target="_blank" class="servicio-cta-primary">Agendar sesión →</a>
         </div>
-        <div>
-          <ul class="sf-puntos">
-            <li>Diagnóstico de narrativa y posicionamiento actual</li>
-            <li>Hoja de ruta concreta para los próximos 30 días</li>
-            <li>Consultoría en planificación y dirección estratégica</li>
-            <li>Guía de comunicación para gerentes, pymes y líderes</li>
-            <li>Orientación para emprendedores en etapa de crecimiento</li>
-            <li>Claridad sobre tu propósito y propuesta de valor</li>
-          </ul>
-          <div class="sf-resultado">
-            <strong>¿Qué obtienen?</strong>
-            Sales con claridad sobre quién eres, qué ofreces y cómo comunicarlo — en 60 minutos.
+        <div style="display:flex;flex-direction:column;gap:1rem;padding-top:.5rem;">
+          <div style="border-left:2px solid rgba(201,169,110,.3);padding-left:1rem;">
+            <div style="font-size:.75rem;color:var(--tierra);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Para quién</div>
+            <div style="font-size:.88rem;color:var(--crema);line-height:1.6;">Gerentes, directores, emprendedores, pymes y marcas personales que necesitan claridad rápida.</div>
+          </div>
+          <div style="border-left:2px solid rgba(201,169,110,.3);padding-left:1rem;">
+            <div style="font-size:.75rem;color:var(--tierra);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Qué trabajamos</div>
+            <div style="font-size:.88rem;color:var(--crema);line-height:1.6;">Narrativa · Posicionamiento · Planificación estratégica · Liderazgo · Propósito</div>
+          </div>
+          <div style="border-left:2px solid rgba(201,169,110,.3);padding-left:1rem;">
+            <div style="font-size:.75rem;color:var(--tierra);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;">Formato</div>
+            <div style="font-size:.88rem;color:var(--crema);line-height:1.6;">Zoom · 60 minutos · Agendamiento inmediato</div>
           </div>
         </div>
       </div>
