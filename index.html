@@ -60,6 +60,27 @@
   }
   .topbar-btn:hover { background: #d4b47a; transform: translateY(-1px); }
 
+  /* NAV TOPBAR */
+  .topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    flex: 1;
+    justify-content: center;
+  }
+  .topbar-nav a {
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: rgba(253,250,245,.65);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s;
+    white-space: nowrap;
+    cursor: none;
+  }
+  .topbar-nav a:hover { color: var(--oro); }
+  @media (max-width: 480px) { .topbar-nav { display: none; } }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -72,6 +93,843 @@
     position: relative;
     overflow: hidden;
   }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(157,109,92,.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 20%, rgba(201,169,110,.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: .25em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: .85;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    color: var(--crema);
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--oro);
+  }
+  .hero-sub {
+    font-size: clamp(.95rem, 2vw, 1.15rem);
+    color: var(--azul-med);
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .divider-gold {
+    width: 48px;
+    height: 1px;
+    background: var(--oro);
+    margin: 0 auto 2rem;
+    opacity: .5;
+  }
+
+  /* INCENTIVO */
+  .incentivo {
+    background: rgba(201,169,110,.1);
+    border: 1px solid rgba(201,169,110,.3);
+    padding: 1rem 1.5rem;
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .incentivo p {
+    font-size: .9rem;
+    color: var(--crema);
+    line-height: 1.6;
+  }
+  .incentivo strong { color: var(--oro); }
+
+  /* FORMULARIO */
+  .form-section {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+  }
+  .form-section input {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.15);
+    color: var(--crema);
+    padding: .9rem 1.1rem;
+    font-size: .95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .form-section input::placeholder { color: rgba(255,255,255,.3); }
+  .form-section input:focus { border-color: var(--oro); }
+  .btn-submit {
+    background: var(--oro);
+    color: var(--azul);
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .2s, transform .15s;
+  }
+  .btn-submit:hover { background: #d4b47a; transform: translateY(-1px); }
+  .form-note {
+    font-size: .75rem;
+    color: var(--azul-med);
+    text-align: center;
+    margin-top: .25rem;
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid rgba(201,169,110,.3);
+    background: rgba(201,169,110,.08);
+  }
+  .form-success p { color: var(--crema); font-size: 1rem; line-height: 1.7; }
+  .form-success strong { color: var(--oro); }
+
+  /* SECCIONES */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  /* SOBRE */
+  .sobre {
+    background: rgba(255,255,255,.03);
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+  .sobre-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  @media (max-width: 600px) { .sobre-inner { grid-template-columns: 1fr; } }
+  .sobre-label {
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--oro);
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+  }
+  .sobre h2 { font-size: 1.6rem; font-weight: 400; color: var(--crema); margin-bottom: 1rem; line-height: 1.3; }
+  .sobre p { font-size: .95rem; color: var(--azul-med); line-height: 1.8; margin-bottom: .85rem; }
+  .sobre-stat { font-size: 2.5rem; color: var(--oro); font-weight: 400; line-height: 1; }
+  .sobre-stat-label { font-size: .8rem; color: var(--azul-med); letter-spacing: .1em; text-transform: uppercase; margin-top: .25rem; }
+
+  /* CUADERNO */
+  .cuaderno {
+    background: var(--crema);
+    color: var(--azul);
+  }
+  .cuaderno .container { text-align: center; }
+  .cuaderno .sobre-label { color: var(--tierra); }
+  .cuaderno h2 { font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; color: var(--azul); }
+  .cuaderno p { color: #4a5568; max-width: 540px; margin: 0 auto 2rem; line-height: 1.8; font-size: .95rem; }
+  .caps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+  .cap-item {
+    border-left: 2px solid var(--oro);
+    padding: .5rem 0 .5rem .75rem;
+  }
+  .cap-num { font-size: .7rem; letter-spacing: .15em; color: var(--tierra); text-transform: uppercase; }
+  .cap-title { font-size: .85rem; color: var(--azul); font-weight: 600; margin-top: .2rem; }
+  .btn-cuaderno {
+    display: inline-block;
+    background: var(--azul);
+    color: var(--oro);
+    padding: .9rem 2rem;
+    text-decoration: none;
+    font-size: .9rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: background .2s;
+    cursor: none;
+  }
+  .btn-cuaderno:hover { background: #1a2438; }
+  .btn-cuaderno-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--azul);
+    border: 1px solid rgba(37,50,74,.4);
+    padding: .85rem 2rem;
+    text-decoration: none;
+    font-size: .85rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: background .2s, color .2s;
+    cursor: none;
+    margin-top: .75rem;
+  }
+  .btn-cuaderno-outline:hover { background: var(--azul); color: var(--oro); }
+
+  /* ============================================
+     SERVICIOS — REDISEÑO COMPLETO
+     ============================================ */
+  .servicios-section {
+    background: rgba(255,255,255,.02);
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+  .servicios-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .servicios-header .sobre-label { color: var(--oro); display: block; margin-bottom: .75rem; }
+  .servicios-header h2 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--crema);
+    margin-bottom: .75rem;
+    line-height: 1.3;
+  }
+  .servicios-header .servicios-intro {
+    font-size: .95rem;
+    color: var(--azul-med);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* Card principal — Asesoría Express destacada */
+  .servicio-featured {
+    border: 1px solid rgba(201,169,110,.35);
+    background: rgba(201,169,110,.06);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .servicio-featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--tierra), var(--oro), var(--tierra));
+  }
+  .servicio-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    border: 1px solid rgba(157,109,92,.4);
+    padding: .25rem .75rem;
+    margin-bottom: 1.25rem;
+  }
+  .servicio-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (max-width: 600px) { .servicio-featured-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .sf-precio {
+    font-size: 2.8rem;
+    color: var(--oro);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: .25rem;
+  }
+  .sf-precio span {
+    font-size: 1rem;
+    color: var(--azul-med);
+    vertical-align: middle;
+    margin-left: .25rem;
+  }
+  .sf-nombre {
+    font-size: 1.3rem;
+    color: var(--crema);
+    font-weight: 600;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+  }
+  .sf-nicho {
+    font-size: .8rem;
+    color: var(--tierra);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .sf-desc {
+    font-size: .92rem;
+    color: var(--azul-med);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .sf-puntos {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  .sf-puntos li {
+    font-size: .88rem;
+    color: var(--crema);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .sf-puntos li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--oro);
+    font-size: .75rem;
+  }
+  .sf-resultado {
+    background: rgba(201,169,110,.08);
+    border-left: 2px solid var(--oro);
+    padding: .85rem 1rem;
+    font-size: .85rem;
+    color: var(--crema);
+    line-height: 1.6;
+  }
+  .sf-resultado strong { color: var(--oro); display: block; margin-bottom: .2rem; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+
+  .servicio-cta-primary {
+    display: block;
+    background: var(--oro);
+    color: var(--azul);
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    font-size: .9rem;
+    font-weight: bold;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: background .2s, transform .15s;
+    margin-top: 1.5rem;
+  }
+  .servicio-cta-primary:hover { background: #d4b47a; transform: translateY(-1px); }
+
+  /* Cards secundarias */
+  .servicios-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .servicio-card {
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 1.75rem;
+    transition: border-color .2s, background .2s;
+  }
+  .servicio-card:hover {
+    border-color: rgba(201,169,110,.35);
+    background: rgba(201,169,110,.04);
+  }
+  .servicio-precio {
+    font-size: 1.7rem;
+    color: var(--oro);
+    font-weight: 400;
+    margin-bottom: .15rem;
+  }
+  .servicio-plazo {
+    font-size: .75rem;
+    color: var(--tierra);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+  }
+  .servicio-nombre {
+    font-size: 1rem;
+    color: var(--crema);
+    margin-bottom: .5rem;
+    font-weight: 600;
+  }
+  .servicio-desc {
+    font-size: .83rem;
+    color: var(--azul-med);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .servicio-link {
+    font-size: .8rem;
+    color: var(--oro);
+    text-decoration: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,169,110,.3);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  .servicio-link:hover { border-color: var(--oro); }
+
+  /* ============================================
+     TESTIMONIOS
+     ============================================ */
+  .testimonios-section {
+    background: var(--crema);
+    border-top: 1px solid rgba(37,50,74,.08);
+  }
+  .testimonios-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .testimonios-header .sobre-label { color: var(--tierra); display: block; margin-bottom: .75rem; }
+  .testimonios-header h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--azul);
+    margin-bottom: .5rem;
+  }
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  /* Testimonio con imagen (sube tu imagen de Canva aquí) */
+  .testimonio-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: rgba(37,50,74,.08);
+    border: 1px solid rgba(37,50,74,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .testimonio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Placeholder para cuando no hay imagen cargada */
+  .testimonio-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    padding: 2rem;
+    text-align: center;
+    color: var(--azul-med);
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+  }
+  .testimonio-placeholder .ph-icon {
+    font-size: 2rem;
+    opacity: .35;
+  }
+  .testimonio-placeholder .ph-text {
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .5;
+    max-width: 140px;
+    line-height: 1.5;
+  }
+  .testimonio-placeholder .ph-sub {
+    font-size: .7rem;
+    opacity: .35;
+    font-style: italic;
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  footer {
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  footer p { font-size: .78rem; color: var(--azul-med); line-height: 1.8; }
+  footer a { color: var(--oro); text-decoration: none; }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .footer-nav a {
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: rgba(253,250,245,.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s;
+    cursor: none;
+  }
+  .footer-nav a:hover { color: var(--oro); }
+  .footer-divider { width: 32px; height: 1px; background: rgba(201,169,110,.3); margin: 0 auto 1.5rem; }
+
+  /* CURSOR PERSONALIZADO */
+  #custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 22px;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity .15s;
+    user-select: none;
+  }
+
+  /* FOTO */
+  .foto-container {
+    width: 100%;
+    max-width: 190px;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* LINK SOBRE MÍ inline */
+  .sobre-link {
+    font-size: .8rem;
+    color: var(--oro);
+    text-decoration: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,169,110,.3);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+    cursor: none;
+    display: inline-block;
+    margin-top: .5rem;
+  }
+  .sobre-link:hover { border-color: var(--oro); }
+</style>
+</head>
+<body>
+
+<!-- CURSOR PERSONALIZADO -->
+<div id="custom-cursor">🌴</div>
+
+<!-- BARRA SUPERIOR FIJA CON CTA -->
+<nav class="topbar">
+  <span class="topbar-brand">Caribe Austral</span>
+  <div class="topbar-nav">
+    <a href="https://josemanuelsimons.github.io/sobre-mi.html" target="_blank">Sobre mí</a>
+    <a href="https://anteroslegal.cl" target="_blank">Anteros Legal</a>
+    <a href="#servicios" class="nav-scroll">Servicios</a>
+    <a href="#suscribirse" class="nav-scroll">Newsletter</a>
+  </div>
+  <a href="#servicios" class="topbar-btn nav-scroll">Trabajemos →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-tag">Newsletter · Narrativa · Liderazgo</p>
+  <h1>Desde el <em>fin del mundo</em>,<br>empieza todo.</h1>
+  <p class="hero-sub">Ideas sobre narrativa personal, liderazgo auténtico y construcción de autoridad. Desde PUQ, todos los martes.</p>
+  <div class="divider-gold"></div>
+
+  <!-- INCENTIVO -->
+  <div class="incentivo">
+    <p>Suscríbete y recibe el <strong>Capítulo 1 del Cuaderno de Frontera</strong> — El Carisma Caribeño — gratis, hoy.</p>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="form-section" id="suscribirse">
+    <form id="form-ca" novalidate>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+      <input type="email" id="email" name="email" placeholder="Tu correo" autocomplete="email" required>
+      <button type="submit" class="btn-submit">Quiero estar aquí →</button>
+    </form>
+    <p class="form-note">Sin spam. Sin algoritmos. Solo lo que vale la pena leer.</p>
+    <div class="form-success" id="success">
+      <p><strong>Ya estás aquí.</strong><br>Revisa tu correo — el Capítulo 1 está en camino.<br>El newsletter empieza el <strong>19 de mayo</strong>, todos los martes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre-mi">
+  <div class="sobre-inner">
+    <div style="display:flex;flex-direction:column;gap:1.5rem;align-items:center;">
+      <div class="foto-container">
+        <img
+          src="img/sesion.jpg"
+          alt="José Manuel Simons"
+          loading="lazy"
+        >
+      </div>
+      <div style="text-align:center;">
+        <div class="sobre-stat">13+</div>
+        <div class="sobre-stat-label">años de experiencia</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sobre-stat">2</div>
+        <div class="sobre-stat-label">proyectos activos</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="sobre-stat">3</div>
+        <div class="sobre-stat-label">años en Patagonia</div>
+      </div>
+    </div>
+    <div>
+      <p class="sobre-label">Sobre el proyecto</p>
+      <h2>El Caribe que eligió lo Austral.</h2>
+      <p>Soy José Manuel Simons — abogado migratorio venezolano, fundador de Anteros Legal y de Caribe Austral. Vine de Caracas. Elegí Punta Arenas. Y desde el extremo del mapa, aprendí que los mejores liderazgos no nacen de la perfección.</p>
+      <p>Nacen del fuego y de las grietas.</p>
+      <p>Caribe Austral es el espacio donde transformo esa experiencia en herramientas para líderes, emprendedores y profesionales que quieren que su historia trabaje para ellos.</p>
+      <a href="https://josemanuelsimons.github.io/sobre-mi.html" target="_blank" class="sobre-link">Sobre mí →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CUADERNO -->
+<section class="cuaderno">
+  <div class="container">
+    <p class="sobre-label">Herramientas Caribe Austral</p>
+    <h2>Cuaderno de Frontera</h2>
+    <p>8 capítulos sobre liderazgo, narrativa y marca personal. Escrito desde la experiencia, no desde la teoría. Con ejercicios concretos al final de cada capítulo.</p>
+    <div class="caps-grid">
+      <div class="cap-item"><div class="cap-num">Cap 1</div><div class="cap-title">El Carisma Caribeño</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 2</div><div class="cap-title">Migrar con Dignidad y Humor</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 3</div><div class="cap-title">Liderar desde la Diversidad</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 4</div><div class="cap-title">Fuego: Pasión y Propósito</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 5</div><div class="cap-title">Grietas: Vulnerabilidad como Poder</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 6</div><div class="cap-title">Herramientas para Liderar</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 7</div><div class="cap-title">El Poder de Madurar</div></div>
+      <div class="cap-item"><div class="cap-num">Cap 8</div><div class="cap-title">Branding Humano y Estratégico</div></div>
+    </div>
+    <a href="#suscribirse" class="btn-cuaderno nav-scroll">Recibir el Capítulo 1 gratis →</a>
+    <a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" target="_blank" class="btn-cuaderno-outline">Cuaderno Completo →</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICIOS — SECCIÓN REDISEÑADA
+     ============================================================ -->
+<section class="servicios-section" id="servicios">
+  <div class="container">
+
+    <div class="servicios-header">
+      <span class="sobre-label">Trabaja conmigo</span>
+      <h2>Claridad estrat&eacute;gica.<br>Resultados reales.</h2>
+      <p class="servicios-intro">Ayudo a <strong style="color:var(--crema)">gerentes, directores, emprendedores y marcas personales</strong> a construir autoridad desde su historia — con dirección estratégica, narrativa de impacto y liderazgo con propósito.</p>
+    </div>
+
+    <!-- SERVICIO DESTACADO: ASESORÍA EXPRESS -->
+    <div class="servicio-featured">
+      <span class="servicio-badge">Servicio principal</span>
+      <div class="servicio-featured-grid">
+        <div>
+          <div class="sf-precio">$60 USD <span>· 60 min</span></div>
+          <div class="sf-nombre">Asesoría Express</div>
+          <div class="sf-nicho">Para líderes, emprendedores y marcas personales</div>
+          <div class="sf-desc">
+            Una sola sesión. Diagnóstico preciso, dirección clara, acción inmediata. Trabajo contigo en posicionamiento, narrativa, planificación estratégica o toma de decisiones críticas.
+          </div>
+          <a href="https://calendly.com/josemanuelsimons/asesoria-express-caribe-austral" target="_blank" class="servicio-cta-primary">Agendar sesión →</a>
+        </div>
+        <div>
+          <ul class="sf-puntos">
+            <li>Diagnóstico de narrativa y posicionamiento actual</li>
+            <li>Hoja de ruta concreta para los próximos 30 días</li>
+            <li>Consultoría en planificación y dirección estratégica</li>
+            <li>Guía de comunicación para gerentes, pymes y líderes</li>
+            <li>Orientación para emprendedores en etapa de crecimiento</li>
+            <li>Claridad sobre tu propósito y propuesta de valor</li>
+          </ul>
+          <div class="sf-resultado">
+            <strong>¿Qué obtienen?</strong>
+            Sales con claridad sobre quién eres, qué ofreces y cómo comunicarlo — en 60 minutos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID DE SERVICIOS SECUNDARIOS -->
+    <div class="servicios-grid-2">
+
+      <div class="servicio-card">
+        <div class="servicio-precio">$350 USD</div>
+        <div class="servicio-plazo">4 sesiones · proceso profundo</div>
+        <div class="servicio-nombre">Mentoría 1:1</div>
+        <div class="servicio-desc">Cuatro semanas de trabajo real. Narrativa personal, liderazgo auténtico, posicionamiento y plan de acción. Para quienes construyen algo que importa y quieren que su historia trabaje para ellos.</div>
+        <a href="https://calendly.com/josemanuelsimons/mentoria-1-1-narrativa-con-proposito" target="_blank" class="servicio-link">Agendar →</a>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-precio">$80 USD</div>
+        <div class="servicio-plazo">90 min · 11 julio 2026 · online</div>
+        <div class="servicio-nombre">Taller: Storytelling con Propósito</div>
+        <div class="servicio-desc">Aprende a contar tu historia de forma que importe. Narrativa estratégica, posicionamiento y comunicación con impacto. Para líderes y emprendedores que quieren ser recordados por lo correcto.</div>
+        <a href="https://josemanuelsimons.github.io/taller" target="_blank" class="servicio-link">Ver taller →</a>
+      </div>
+
+      <div class="servicio-card">
+        <div class="servicio-precio">Anteros Legal</div>
+        <div class="servicio-plazo">boutique jurídica · punta arenas</div>
+        <div class="servicio-nombre">Asesoría Migratoria & Empresarial</div>
+        <div class="servicio-desc">Migración de alto estándar y estrategia legal corporativa. +500 intervenciones exitosas. Recursos estratégicos para personas y empresas que exigen precisión.</div>
+        <a href="https://anteroslegal.cl" target="_blank" class="servicio-link">Contactar →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIOS
+     ============================================================ -->
+<section class="testimonios-section" id="testimonios">
+  <div class="container">
+    <div class="testimonios-header">
+      <span class="sobre-label">Lo que dicen</span>
+      <h2>Resultados reales.<br>Historias reales.</h2>
+    </div>
+
+    <!--
+      INSTRUCCIONES PARA SUBIR TESTIMONIOS:
+      Cada .testimonio-img puede contener una imagen de Canva.
+      Reemplaza el bloque .testimonio-placeholder con:
+      <img src="ruta/a/tu/imagen.jpg" alt="Testimonio de [Nombre]">
+
+      Puedes agregar o quitar bloques según el número de testimonios.
+      Se recomiendan 3, 4 o 6 para que el grid quede simétrico.
+    -->
+    <div class="testimonios-grid">
+
+      <!-- TESTIMONIO 1 — sube tu imagen aquí -->
+      <div class="testimonio-img">
+        <div class="testimonio-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-text">Testimonio 1</div>
+          <div class="ph-sub">Sube tu imagen de Canva</div>
+        </div>
+        <!-- REEMPLAZAR POR: <img src="img/testimonio-1.jpg" alt="Testimonio"> -->
+      </div>
+
+      <!-- TESTIMONIO 2 -->
+      <div class="testimonio-img">
+        <div class="testimonio-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-text">Testimonio 2</div>
+          <div class="ph-sub">Sube tu imagen de Canva</div>
+        </div>
+        <!-- REEMPLAZAR POR: <img src="img/testimonio-2.jpg" alt="Testimonio"> -->
+      </div>
+
+      <!-- TESTIMONIO 3 -->
+      <div class="testimonio-img">
+        <div class="testimonio-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-text">Testimonio 3</div>
+          <div class="ph-sub">Sube tu imagen de Canva</div>
+        </div>
+        <!-- REEMPLAZAR POR: <img src="img/testimonio-3.jpg" alt="Testimonio"> -->
+      </div>
+
+      <!-- TESTIMONIO 4 -->
+      <div class="testimonio-img">
+        <div class="testimonio-placeholder">
+          <div class="ph-icon">🖼</div>
+          <div class="ph-text">Testimonio 4</div>
+          <div class="ph-sub">Sube tu imagen de Canva</div>
+        </div>
+        <!-- REEMPLAZAR POR: <img src="img/testimonio-4.jpg" alt="Testimonio"> -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <nav class="footer-nav">
+    <a href="https://josemanuelsimons.github.io/sobre-mi.html" target="_blank">Sobre mí</a>
+    <a href="https://anteroslegal.cl" target="_blank">Anteros Legal</a>
+    <a href="#servicios" class="nav-scroll">Servicios</a>
+    <a href="#suscribirse" class="nav-scroll">Newsletter</a>
+  </nav>
+  <div class="footer-divider"></div>
+  <p>
+    <strong style="color:var(--crema)">Caribe Austral</strong> · José Manuel Simons<br>
+    Punta Arenas, Chile · <a href="https://www.instagram.com/josemanuelsimons" target="_blank">@josemanuelsimons</a>
+    · <a href="https://www.anteroslegal.cl" target="_blank">anteroslegal.cl</a>
+  </p>
+</footer>
+
+<script>
+const WEBHOOK = 'https://hook.us2.make.com/fb2lymvktha4ferduu31vfix2f3ld7fj';
+
+document.getElementById('form-ca').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value.trim();
+  const email  = document.getElementById('email').value.trim();
+  if (!nombre || !email || !email.includes('@')) {
+    document.getElementById('email').focus();
+    return;
+  }
+  const btn = this.querySelector('button');
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+  try {
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({nombre, email, fuente: 'landing_github', incentivo: 'cap1_cuaderno'})
+    });
+  } catch(err) { /* silencioso */ }
+  this.style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+});
+
+/* ── CURSOR PERSONALIZADO ── */
+const cursor = document.getElementById('custom-cursor');
+const icons = ['🌴', '❄️'];
+let iconIndex = 0;
+let switchTimer = null;
+
+document.addEventListener('mousemove', function(e) {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+  cursor.style.opacity = '1';
+  clearTimeout(switchTimer);
+  switchTimer = setTimeout(function() {
+    iconIndex = (iconIndex + 1) % 2;
+    cursor.textContent = icons[iconIndex];
+  }, 1800);
+});
+document.addEventListener('mouseleave', function() { cursor.style.opacity = '0'; });
+document.addEventListener('mouseenter', function() { cursor.style.opacity = '1'; });
+
+/* ── SCROLL SUAVE PARA ANCLAS INTERNAS ── */
+document.querySelectorAll('.nav-scroll').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>  }
   .hero::before {
     content: '';
     position: absolute;
