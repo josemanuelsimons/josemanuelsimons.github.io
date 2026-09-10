@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cuaderno-de-frontera.pdf/
 
 Sitemap: https://josemanuelsimons.github.io/sitemap.xml
