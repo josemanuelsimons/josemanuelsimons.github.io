@@ -1,678 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Columnas — José Manuel Simons · Caribe Austral</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --azul:    #25324a;
-  --azul-med:#6b7d93;
-  --tierra:  #9d6d5c;
-  --oro:     #c9a96e;
-  --crema:   #FDFAF5;
-  --negro:   #0f0f0f;
-  --gris:    #888888;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--crema);
-  color: var(--negro);
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 19px;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-  cursor: none;
-}
-
-/* CURSOR */
-#cursor {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  font-size: 18px;
-  transform: translate(-50%,-50%);
-  transition: opacity .15s;
-  user-select: none;
-}
-
-/* HEADER */
-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(253,250,245,.97);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(201,169,110,.25);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.5rem;
-  height: 58px;
-}
-
-.header-brand {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: .18em;
-  color: var(--azul);
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.header-nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.header-nav a {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .15em;
-  color: var(--azul-med);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color .2s;
-}
-
-.header-nav a:hover { color: var(--oro); }
-
-.header-nav a.active { color: var(--azul); border-bottom: 1px solid var(--oro); padding-bottom: 2px; }
-
-/* HERO COLUMNAS */
-.columnas-hero {
-  padding: 130px 2.5rem 60px;
-  max-width: 760px;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(37,50,74,.1);
-}
-
-.columnas-hero .seccion-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .25em;
-  color: var(--tierra);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1.25rem;
-}
-
-.columnas-hero h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.12;
-  color: var(--azul);
-  margin-bottom: 1.25rem;
-  letter-spacing: -.01em;
-}
-
-.columnas-hero p {
-  font-size: 1.1rem;
-  color: var(--azul-med);
-  line-height: 1.7;
-  max-width: 520px;
-}
-
-/* ARTÍCULO */
-article {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 64px 2.5rem 100px;
-}
-
-.article-meta {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(37,50,74,.1);
-  flex-wrap: wrap;
-}
-
-.article-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: .12em;
-  color: var(--gris);
-  text-transform: uppercase;
-}
-
-.article-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .15em;
-  color: var(--tierra);
-  text-transform: uppercase;
-  border: 1px solid rgba(157,109,92,.35);
-  padding: .2rem .75rem;
-}
-
-/* TÍTULO DEL ARTÍCULO */
-.article-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 4.5vw, 2.9rem);
-  font-weight: 700;
-  line-height: 1.12;
-  color: var(--azul);
-  margin-bottom: .5rem;
-  letter-spacing: -.01em;
-}
-
-.article-subtitle {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--azul-med);
-  margin-bottom: 2.5rem;
-  line-height: 1.5;
-}
-
-/* CUERPO */
-.article-body {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 20px;
-  line-height: 1.8;
-  color: #1a1a1a;
-}
-
-.article-body p {
-  margin-bottom: 1.5rem;
-}
-
-.article-body strong {
-  color: var(--azul);
-  font-weight: 600;
-}
-
-.article-body em {
-  font-style: italic;
-  color: var(--tierra);
-}
-
-/* PULL QUOTE */
-.pull-quote {
-  border-left: 3px solid var(--oro);
-  padding: 1.25rem 0 1.25rem 1.75rem;
-  margin: 2.5rem 0;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.35rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--azul);
-}
-
-/* SECCIÓN INTERNA */
-.article-body h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--azul);
-  margin: 2.5rem 0 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(37,50,74,.1);
-}
-
-/* DATO DESTACADO */
-.dato {
-  background: rgba(201,169,110,.08);
-  border: 1px solid rgba(201,169,110,.3);
-  padding: 1.25rem 1.5rem;
-  margin: 2rem 0;
-  font-family: 'DM Mono', monospace;
-  font-size: .85rem;
-  color: var(--azul);
-  line-height: 1.6;
-}
-
-.dato strong {
-  color: var(--tierra);
-  display: block;
-  font-size: .75rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: .4rem;
-}
-
-/* CIERRE / FIRMA */
-.article-firma {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(37,50,74,.12);
-  font-family: 'DM Mono', monospace;
-  font-size: .8rem;
-  color: var(--gris);
-  line-height: 1.7;
-}
-
-/* COMPARTIR */
-.share-section {
-  margin-top: 3rem;
-  padding: 2rem;
-  background: var(--azul);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.share-section p {
-  font-family: 'DM Mono', monospace;
-  font-size: .8rem;
-  letter-spacing: .12em;
-  color: rgba(253,250,245,.6);
-  text-transform: uppercase;
-}
-
-.share-link {
-  font-family: 'DM Mono', monospace;
-  font-size: .8rem;
-  letter-spacing: .1em;
-  color: var(--oro);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(201,169,110,.4);
-  padding-bottom: 2px;
-  text-transform: uppercase;
-  transition: border-color .2s;
-}
-
-.share-link:hover { border-color: var(--oro); }
-
-/* OTRAS COLUMNAS (placeholder) */
-.mas-columnas {
-  background: rgba(37,50,74,.04);
-  border-top: 1px solid rgba(37,50,74,.1);
-  padding: 60px 2.5rem;
-}
-
-.mas-columnas-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.mas-columnas .seccion-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .25em;
-  color: var(--tierra);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2rem;
-}
-
-.columna-preview {
-  border-top: 1px solid rgba(37,50,74,.1);
-  padding: 1.5rem 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  align-items: start;
-  opacity: .4;
-}
-
-.columna-preview-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.1rem;
-  color: var(--azul);
-  margin-bottom: .35rem;
-}
-
-.columna-preview-meta {
-  font-family: 'DM Mono', monospace;
-  font-size: .75rem;
-  color: var(--gris);
-  letter-spacing: .08em;
-}
-
-.columna-preview-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: .7rem;
-  color: var(--azul-med);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-/* FOOTER */
-footer {
-  background: var(--azul);
-  padding: 2.5rem;
-  text-align: center;
-}
-
-footer p {
-  font-family: 'DM Mono', monospace;
-  font-size: .75rem;
-  color: rgba(253,250,245,.4);
-  letter-spacing: .1em;
-  line-height: 1.8;
-}
-
-footer a { color: var(--oro); text-decoration: none; }
-
-/* LÍNEA DECORATIVA */
-.oro-line {
-  width: 40px;
-  height: 1px;
-  background: var(--oro);
-  margin: 1.5rem 0;
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  header { padding: 0 1.25rem; }
-  .header-nav { display: none; }
-  .columnas-hero { padding: 100px 1.25rem 48px; }
-  article { padding: 48px 1.25rem 80px; }
-  .share-section { flex-direction: column; }
-  .mas-columnas { padding: 48px 1.25rem; }
-  footer { padding: 2rem 1.25rem; }
-}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="v7EeGZR3TnPnjNpEMND73MhrLhKlxGf6TGMu2I60iu8">
+<title>Columnas · Caribe Austral</title>
+<meta name="description" content="Columnas de José Manuel Simons sobre liderazgo, migración y ciudad, escritas desde Punta Arenas.">
+<link rel="canonical" href="https://josemanuelsimons.github.io/columnas.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="Caribe Austral">
+<meta property="og:title" content="Columnas · Caribe Austral">
+<meta property="og:description" content="Columnas de José Manuel Simons sobre liderazgo, migración y ciudad, escritas desde Punta Arenas.">
+<meta property="og:url" content="https://josemanuelsimons.github.io/columnas.html">
+<meta property="og:image" content="https://josemanuelsimons.github.io/img/og/columnas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e7c7b">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css?v=20261124">
 </head>
 <body>
-
-<div id="cursor">🌴</div>
-
-<!-- HEADER -->
-<header>
-  <a href="https://josemanuelsimons.github.io" class="header-brand">Caribe Austral</a>
-  <nav class="header-nav">
-    <a href="https://josemanuelsimons.github.io">Inicio</a>
-    <a href="https://josemanuelsimons.github.io/sobre-mi.html">Sobre mí</a>
-    <a href="columnas.html" class="active">Columnas</a>
-    <a href="#suscribirse">Newsletter</a>
-  </nav>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <div class="ancho">
+    <a class="marca" href="index.html"><b>Caribe Austral</b><span>José Manuel Simons</span></a>
+    <button class="menu-boton" type="button" aria-expanded="false" aria-controls="nav">Menú</button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="index.html#servicios">Servicios</a>
+      <a href="columnas.html" aria-current="page">Columnas</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="mapa/">El mapa</a>
+      <a class="externo" href="https://anteroslegal.cl/" rel="noopener">Anteros Legal</a>
+      <a class="boton" href="#newsletter">Newsletter</a>
+    </nav>
+  </div>
 </header>
-
-<!-- HERO -->
-<div class="columnas-hero">
-  <span class="seccion-label">Columnas de opinión</span>
-  <h1>Ideas que no caben en un reel.</h1>
-  <p>Derecho, territorio, migración, liderazgo. Escritas desde Punta Arenas. 
-    Por José Manuel Simons.</p>
+<div class="riel" aria-hidden="true">
+  <div class="riel__linea"></div>
+  <div class="riel__hito" data-lat="10.5">10°30′N<span>Caracas</span></div>
+  <div class="riel__hito" data-lat="0">0°<span>Ecuador</span></div>
+  <div class="riel__hito" data-lat="-33.45">33°27′S<span>Santiago</span></div>
+  <div class="riel__hito" data-lat="-53.17">53°10′S<span>Punta Arenas</span></div>
+  <div class="riel__marca"></div>
+  <div class="riel__lectura">10°30′N</div>
 </div>
-
-<!-- ARTÍCULO MÁS RECIENTE: LIDERAZGO -->
-<article>
-
-  <div class="article-meta">
-    <span class="article-date">Junio de 2026</span>
-    <span class="article-tag">Liderazgo · Narrativa</span>
-    <span class="article-tag">Filosofía</span>
-  </div>
-
-  <h1 class="article-title">Liderazgo en tiempos hostiles: cinco claves para dirigir sin perder el norte... o el Sur</h1>
-  <p class="article-subtitle">Sobre los falsos líderes fuertes, el estoicismo con raíz, y el coraje de mirar más allá del propio mandato</p>
-
-  <div class="oro-line"></div>
-
-  <div class="article-body">
-
-    <p>Hay un tipo de líder que está de moda, y conviene mirarlo de cerca antes de aplaudirlo.</p>
-
-    <p>Habla fuerte. Promete mano dura. Confunde la crueldad con el carácter y el grito con la convicción. Se presenta como el hombre fuerte que el caos necesita (para siempre ser necesario, requiere caos). Y la multitud, cansada y asustada, lo celebra.</p>
-
-    <p>El problema es que casi nunca es fuerza lo que vemos. Es miedo con buena puesta en escena.</p>
-
-    <p>Detrás de esa ferocidad de cartón suele esconderse exactamente lo contrario de lo que aparenta: un liderazgo inseguro, que necesita someter porque no sabe convencer, que humilla porque teme ser humillado. La psicología tiene nombres clínicos para algunos de estos perfiles y la historia tiene nombres propios. Lo más inquietante no es que existan, siempre existieron y existirán, sino que los estamos copiando. De país en país, casi calcados, como si un mismo molde se hubiera repartido por el continente y cada quien lo rellenara con su propio resentimiento.</p>
-
-    <p>Voltaire decía que es peligroso tener razón en asuntos donde las autoridades establecidas se equivocan. Hoy el peligro es otro: es cómodo equivocarse en manada, mientras la manada aplauda.</p>
-
-    <p>Por eso quiero hablar de la otra clase de liderazgo. El que no está de moda. El que cuesta más y luce menos.</p>
-
-    <h2>Primera clave: la vulnerabilidad como operación, no como debilidad</h2>
-
-    <p>Un líder que jamás muestra una grieta no es invulnerable. Es opaco. Y la opacidad, en quien manda, no inspira confianza: es sospechoso.</p>
-
-    <p>Compartir una vulnerabilidad no es desnudarse en público ni convertir cada reunión en terapia. Es algo más quirúrgico: elegir qué grieta mostrar, cuándo, y para qué. Un líder que sabe decir "esto no lo sé" o "aquí me equivoqué" no pierde autoridad. La gana, porque la única autoridad que dura es la que no necesita fingir perfección.</p>
-
-    <div class="pull-quote">
-      "Las grietas no son defectos. Son credenciales. Pero solo cuando se administran con criterio, no cuando se exhiben por aplauso."
+<div class="pagina">
+<main id="contenido">
+<section class="tramo tramo--hielo" data-tono="claro" aria-labelledby="col-titulo" style="padding-top:clamp(3rem,6vw,5rem)">
+  <div class="ancho">
+    <div class="encabezado">
+      <h1 class="titular" id="col-titulo">Columnas</h1>
+      <p class="entrada suave">Ideas que no caben en un reel. Escritas desde Punta Arenas, con datos verificados y una propuesta al final.</p>
     </div>
-
-    <h2>Segunda clave: estoicismo, con raíz</h2>
-
-    <p>Está de moda el estoicismo. Aparece en hilos motivacionales, en aplicaciones de productividad, en frases sobre fondos de montañas. Casi siempre reducido a una caricatura: aguanta, no sientas, sé una roca. El mismo líder que aparenta fuerza de macho, rudo... cuando todavía es un niño con máscara que tapa su miedo.</p>
-
-    <p>Hay que recordar que el estoicismo no nació como técnica de resistencia individual. Nació en Grecia, sobre una base helénica que entendía al ser humano dentro de una comunidad, dentro de un cosmos con orden y sentido. Marco Aurelio (alumno aristotélico) no escribía para soportar mejor su jornada laboral. Escribía para gobernar un imperio sin perder el alma. Lo mismo con Alejandro Magno (también alumno de Aristóteles), forjado en filosofía antes de conquistar Persia.</p>
-
-    <p>Quiero compartir contigo una frase que me ancla: "Filipo antes que Alejandro". No podemos salir a conquistar sin base previa. Ser estoicos sin pasar por nutrir nuestra alma vulnerable, es ser un andamio de papel. Cuando le quitamos esa raíz, nos queda un estoicismo mutilado: aguante sin propósito, frialdad sin dirección. Útil para soportar lo intolerable en lugar de cambiarlo. El estoicismo verdadero no enseña a no sentir. Enseña a distinguir lo que depende de ti de lo que no, y a poner toda tu energía en lo primero. Eso no es resignación. Es estrategia.</p>
-
-    <h2>Tercera clave: independencia intelectual o cooptación</h2>
-
-    <p>Aquí está la línea que separa a un líder de un repetidor.</p>
-
-    <p>Un líder con visión propia incomoda. No encaja del todo en ningún bando, porque piensa antes de alinearse. Y precisamente por eso es el blanco favorito de la cooptación: los aparatos (políticos, económicos, ideológicos) no toleran bien la independencia. Prefieren convertirte en vocero antes que dejarte ser voz.</p>
-
-    <p>Esos líderes supuestamente feroces que mencionaba al principio son, casi siempre, el producto final de una cooptación exitosa. Se ven indómitos. Son obedientes. Repiten un libreto que no escribieron, con una furia que no es suya, al servicio de intereses que no confiesan. Fotocopias.</p>
-
-    <p>Mantener la independencia intelectual cuesta soledad. Pero la alternativa es peor: ser fuerte de cara a la galería y dócil de espaldas a ella.</p>
-
-    <h2>Cuarta clave: decisiones basadas en datos, no sobre impulsos</h2>
-
-    <p>La hostilidad de estos tiempos tiene un aliado silencioso: la prisa.</p>
-
-    <p>Siempre que la multitud quiera ir rápido, es cuando más hay que frenarse. Se nos exige decidir rápido, reaccionar ya, responder antes de pensar. Y en esa velocidad, el dato cede su lugar a la corazonada, y la corazonada al prejuicio. Liderar bien hoy exige algo profundamente anticuado: detenerse a mirar la evidencia antes de actuar. Aquí es donde el estoicismo sin base no cuadra con ser un borrego que reacciona rápido.</p>
-
-    <p>Esto no riñe con la intuición (la intuición entrenada es valiosa). Riñe con el impulso disfrazado de instinto. Un hombre impulsivo es alguien que no tiene autodominio, mucho menos autogobierno. La diferencia es simple: la intuición lee patrones que conoces; el impulso solo descarga lo que sientes. Un líder serio sabe cuál de los dos está operando, y desconfía del segundo justo cuando todos lo aplauden.</p>
-
-    <h2>Quinta clave: perspectiva de futuro en una sociedad que envejece hacia atrás</h2>
-
-    <p>Y aquí la más incómoda de todas.</p>
-
-    <p>Nuestras sociedades envejecen. No es opinión, es demografía. Pero el envejecimiento no trae solo experiencia y calma: a veces trae lo contrario. Hay una verdad vieja, casi cruel: mientras más mayores nos hacemos, más tendemos a volver a ser niños. Más tercos. Más impacientes. Más aferrados a lo que ya conocemos. Más reaccionarios.</p>
-
-    <p>Una población más vieja puede volverse una sociedad más reactiva: exige soluciones inmediatas, desconfía de lo nuevo, quiere certezas de ayer para problemas de mañana. Y un líder que solo le da a esa población lo que pide (rapidez, nostalgia, mano dura) la condena. Porque gobernar para el aplauso de hoy es hipotecar el mañana de todos.</p>
-
-    <div class="pull-quote">
-      "El líder que el momento necesita no es el que corre más rápido en la dirección que la multitud señala. Es el que tiene la fortaleza de levantar la vista hacia donde nadie está mirando todavía."
+    <div class="columnas-grid">
+      <a class="col-tarjeta" href="columnas/liderazgo-en-tiempos-hostiles.html">
+        <div class="col-tarjeta__portada"><picture><source srcset="img/columnas/liderazgo-en-tiempos-hostiles.webp" type="image/webp"><img src="img/columnas/liderazgo-en-tiempos-hostiles.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></picture></div>
+        <span class="col-tarjeta__fecha">Junio de 2026. Liderazgo y filosofía</span>
+        <h2 class="h3">Liderazgo en tiempos hostiles: cinco claves para dirigir sin perder el norte… o el Sur</h2>
+        <p>Sobre los falsos líderes fuertes, el estoicismo con raíz y el coraje de mirar más allá del propio mandato.</p>
+      </a>
+<a class="col-tarjeta" href="columnas/la-ciudad-construida-por-migrantes.html">
+        <div class="col-tarjeta__portada"><picture><source srcset="img/columnas/la-ciudad-construida-por-migrantes.webp" type="image/webp"><img src="img/columnas/la-ciudad-construida-por-migrantes.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></picture></div>
+        <span class="col-tarjeta__fecha">24 de mayo de 2026. Migración y ciudad</span>
+        <h2 class="h3">La ciudad construida por migrantes que olvidó nombrarlos</h2>
+        <p>347 páginas de Cuenta Pública y ni una vez la palabra «migración». Lo que pasa cuando una ciudad olvida su propio origen.</p>
+      </a>
     </div>
-
-    <div class="oro-line"></div>
-
-    <p>Francisco de Miranda, el primer venezolano universal, murió en una celda sin ver libre a su continente. Había imaginado una nación que tardaría generaciones en existir. Lo llamaron iluso, soñador, adelantado. Y lo era: esa fue exactamente su grandeza. El Precursor no se mide por lo que alcanzó a ver terminado, sino por lo que tuvo el coraje de empezar sabiendo que la cosecha sería de otros.</p>
-
-    <p>Esa es, quizá, la única definición de liderazgo que vale la pena en tiempos hostiles: dirigir con la vista puesta más allá del propio mandato temporal. Con grietas a la vista y sin miedo a mostrarlas (si tienes miedo a mostrarla, reconoce tu miedo). Con la calma de los estoicos y la raíz que les dio sentido. Con cabeza propia y datos en la mano. Y con la terquedad noble de no confundir lo urgente con lo importante.</p>
-
-    <p>No es el liderazgo que aplaude la multitud asustada.</p>
-
-    <p>Es el que, con el tiempo, la historia agradece.</p>
-
-  </div>
-
-  <div class="article-firma">
-    José Manuel Simons es abogado, narrador y fundador de Caribe Austral.<br>
-    Escribe desde Punta Arenas, Chile.
-  </div>
-
-  <div class="share-section">
-    <p>Comparte esta columna</p>
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://josemanuelsimons.github.io/columnas" class="share-link" target="_blank">LinkedIn →</a>
-      <a href="https://twitter.com/intent/tweet?text=Liderazgo en tiempos hostiles: cinco claves para dirigir sin perder el norte&url=https://josemanuelsimons.github.io/columnas" class="share-link" target="_blank">Twitter / X →</a>
-      <a href="https://josemanuelsimons.github.io" class="share-link">Caribe Austral →</a>
-    </div>
-  </div>
-
-</article>
-
-
-<!-- SEPARADOR ENTRE COLUMNAS -->
-<div style="max-width:720px;margin:0 auto;padding:0 2.5rem;">
-  <div style="border-top:2px solid rgba(201,169,110,.3);"></div>
-</div>
-
-<!-- ARTÍCULO PRINCIPAL -->
-<article>
-
-  <div class="article-meta">
-    <span class="article-date">24 de mayo de 2026</span>
-    <span class="article-tag">Migración · Política Municipal</span>
-    <span class="article-tag">Punta Arenas</span>
-  </div>
-
-  <h1 class="article-title">La ciudad construida por migrantes que olvidó nombrarlos</h1>
-  <p class="article-subtitle">…y lo que pasa cuando una ciudad olvida su propio origen</p>
-
-  <div class="oro-line"></div>
-
-  <div class="article-body">
-
-    <p>Trescientas cuarenta y siete páginas tiene la Cuenta Pública 2025 de la Municipalidad de Punta Arenas. La leí completa. Convenios, presupuestos, ferias, programas sociales, el Cementerio Sara Braun, las quince mil luminarias, la Tarjeta de Vecino. Todo está ahí. Todo, menos una palabra: <strong>migración</strong>.</p>
-
-    <p>No aparece. Ni en el PLADECO, ni en las comisiones del Concejo, ni en los programas sociales. La palabra "extranjeros" aparece exactamente una vez, en una estadística del Registro Social de Hogares: <strong>5.894 personas extranjeras inscritas.</strong> Esa cifra es el dato más importante del documento. Y nadie lo ha leído como corresponde.</p>
-
-    <div class="pull-quote">
-      "El verdadero problema no es que lleguen. Es que cuando llegan, no encuentran la puerta de entrada formal."
-    </div>
-
-    <p>Empecemos por desarmar el discurso. Cada vez que alguien dice "los migrantes vienen a quitarnos beneficios", está repitiendo una idea que no resiste el primer chequeo. Para acceder a un beneficio social municipal necesitas estar inscrito en el RSH. Para inscribirte en el RSH necesitas RUT, domicilio comprobable y haber realizado un trámite específico. Sin esa puerta, no hay paso. El RUT que da la AFP no permite inscripción porque no tiene emisión de carnet y por ende, tampoco número de serie. Aunque coloquen el RUT, sin visa vigente, no hay ni siquiera inscripción.</p>
-
-    <p><strong>5.894 extranjeros registrados en el RSH municipal es la nada estadística.</strong> No es que los migrantes accedan masivamente a beneficios. Es exactamente al revés: la gran mayoría no accede a ellos.</p>
-
-    <p>Y eso no es bueno para nadie. Cada vecino que no se registra es un vecino que no recibe el apoyo que necesita, que no cuenta en los datos demográficos que el municipio usa para pedir recursos al gobierno central, y que cuando se enferma colapsa los servicios de urgencia… que son universales por ley, sin importar nacionalidad. El costo del migrante excluido se paga en filas más largas en el SAR y en el Hospital Clínico saturado.</p>
-
-    <h2>Lo que INCAMI ve desde adentro</h2>
-
-    <p>Mientras la Municipalidad no nombra a sus migrantes, hay una institución que los atiende en silencio desde hace cinco años. INCAMI (el Instituto Católico Chileno de Migración) opera en Punta Arenas desde Monseñor José Fagnano 630.</p>
-
-    <div class="dato">
-      <strong>Dato verificado · INCAMI Punta Arenas</strong>
-      ~2.000 personas atendidas al año · ~10.000 acumulado en cinco años de presencia regional.
-    </div>
-
-    <p>Diez mil personas. En una ciudad donde el documento más importante del municipio no menciona la migración ni una vez y cuando lo hace, significa la mitad de la realidad.</p>
-
-    <p>INCAMI no pide reconocimiento. Hace su trabajo. Pero la pregunta que surge es inevitable: ¿cómo es posible que una institución de la sociedad civil haya acompañado a 10.000 personas en este territorio, y que esa realidad no haya generado ni una sola comisión permanente en el Concejo Municipal? En todo caso, hay más migrantes que todos los votos que registran algunos consejales. El dato migrante es duro, pero más cruel es que estén invisibilizados.</p>
-
-    <h2>El espejo que Punta Arenas no quiere ver</h2>
-
-    <div class="dato">
-      <strong>Dato · Censo 2024</strong>
-      Puerto Natales: 2.338 extranjeros · aproximadamente la mitad que Punta Arenas.
-    </div>
-
-    <p>Pero Puerto Natales tiene algo que Punta Arenas no tiene: <strong>una Oficina de Migración e Interculturalidad</strong>, programas específicos para niños migrantes, operativos en terreno, y una colaboración activa con el SERMIG para obtener el <strong>Sello Migrante</strong>… una certificación nacional de buenas prácticas en integración. Puerto Natales es la primera comuna de la región de Magallanes en adherir, y la más austral de Chile en hacerlo hasta la fecha.</p>
-
-    <p>La DIDECO de Natales tiene programas expresos en esta línea. No como gesto político. Como decisión administrativa.</p>
-
-    <div class="pull-quote">
-      "Natales ve a los migrantes como vecinos. Punta Arenas los ve, cuando los ve, como infractores que hay que perseguir."
-    </div>
-
-    <p>Eso es una elección. Y las elecciones tienen consecuencias.</p>
-
-    <h2>Punta Arenas existe porque otros llegaron antes</h2>
-
-    <p>Esta ciudad no se construyó sola. La construyeron croatas que llegaron a fines del siglo XIX huyendo de la pobreza dálmata. Ingleses que vinieron por la lana. Españoles, italianos, alemanes, judíos sefaradíes y asquenazíes que abrieron comercios en lo que hoy es el centro. El Cementerio Municipal lleva el nombre de <strong>Sara Braun</strong>, hija de migrantes. <strong>Mauricio Braun</strong> fundó la Sociedad Explotadora de Tierra del Fuego junto a <strong>José Menéndez</strong>, asturiano. La Cervecería Austral, la familia Fischer, alemanes.</p>
-
-    <p>Y la página 263 de la Cuenta Pública 2025 lista los apellidos del Concejo: <strong>Stipicic Mackenney, Eterovic, Cárcamo, Becerra, Bradasic.</strong> Croatas, españoles, italianos. El propio cuerpo político que gobierna la ciudad hoy es descendiente de migrantes.</p>
-
-    <p>Hay una lógica antigua en esto. Las ciudades que prosperan son las que reciben a quienes vienen con las manos llenas de voluntad… y tienen la sabiduría de reconocerlos. Punta Arenas ya sabe hacer eso.</p>
-
-    <h2>La propuesta concreta</h2>
-
-    <p>El Concejo Municipal de Punta Arenas tiene diez comisiones permanentes. No hay Comisión de Migración. No hay Comisión de Integración. En una ciudad fundada por migrantes, en un momento en que INCAMI atiende 2.000 personas al año y Puerto Natales ya trabaja activamente por el Sello Migrante, <strong>Punta Arenas no tiene un espacio formal para discutir cómo integrar a sus nuevos vecinos.</strong></p>
-
-    <p>Eso no es maldad. Es un vacío. Y los vacíos políticos siempre se llenan con algo: con el discurso fácil del "nos vienen a quitar", con la fiscalización reactiva, con el silencio que después cobra factura a la convivencia.</p>
-
-    <p>El PLADECO 2026-2030 se está construyendo ahora. Hay una ventana. Mi propuesta concreta, dirigida a las concejalas y concejales que lean esto: <strong>incluyan un capítulo explícito sobre integración migrante.</strong> No para darles más a los migrantes. Para contarlos a todos, para que la ciudad pida más recursos al gobierno central, para que haya un punto de entrada claro donde un recién llegado sepa qué hacer y a dónde ir.</p>
-
-    <p>Eso no requiere militancia política. Requiere decisión administrativa. Puerto Natales ya lo demostró.</p>
-
-    <div class="oro-line"></div>
-
-    <p>Trescientas cuarenta y siete páginas. Cinco mil ochocientos noventa y cuatro extranjeros registrados. Diez mil atendidos por INCAMI en cinco años. Dos mil trescientos treinta y ocho vecinos extranjeros en Natales que ya tienen oficina propia, programas para sus hijos y un municipio que trabaja por certificarse como ciudad de bienvenida.</p>
-
-    <p>En los rituales de las logias del siglo XIX, varias fundadas por los mismos inmigrantes croatas, ingleses y judíos que construyeron esta ciudad, había una pregunta que se hacía al nuevo miembro antes de que cruzara el umbral:</p>
-
-    <div class="pull-quote">
-      "¿De dónde vienes y a dónde vas?"
-    </div>
-
-    <p>Era la pregunta que definía si alguien pertenecía. No la sangre. No el apellido. La disposición a responder con honestidad. Punta Arenas se fundó cruzando ese umbral. La pregunta para el próximo PLADECO es si está dispuesta a hacerla de nuevo.</p>
-
-    <p>Magallanes ya hizo esto antes. Sabe cómo se hace.</p>
-
-  </div>
-
-  <div class="article-firma">
-    José Manuel Simons es especialista en derecho migratorio,<br>
-    fundador de Anteros Legal y Caribe Austral.<br>
-    Escribe desde Punta Arenas, Chile.
-  </div>
-
-  <div class="share-section">
-    <p>Comparte esta columna</p>
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://josemanuelsimons.github.io/columnas" class="share-link" target="_blank">LinkedIn →</a>
-      <a href="https://twitter.com/intent/tweet?text=La ciudad construida por migrantes que olvidó nombrarlos&url=https://josemanuelsimons.github.io/columnas" class="share-link" target="_blank">Twitter / X →</a>
-      <a href="https://josemanuelsimons.github.io" class="share-link">Caribe Austral →</a>
-    </div>
-  </div>
-
-</article>
-
-<!-- MÁS COLUMNAS (próximamente) -->
-<section class="mas-columnas">
-  <div class="mas-columnas-inner">
-    <span class="seccion-label">Próximas columnas</span>
-
-    <div class="columna-preview">
-      <div>
-        <div class="columna-preview-title">El puente invisible entre el Caribe y la Patagonia</div>
-        <div class="columna-preview-meta">Junio 2026 · Migración · Derechos Humanos</div>
-      </div>
-      <span class="columna-preview-badge">Próximamente</span>
-    </div>
-
-    <div class="columna-preview">
-      <div>
-        <div class="columna-preview-title">Contratar migrantes no es un riesgo. No saber cómo hacerlo, sí.</div>
-        <div class="columna-preview-meta">Julio 2026 · Derecho Laboral · Empresas</div>
-      </div>
-      <span class="columna-preview-badge">Próximamente</span>
-    </div>
-
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <p>
-    <strong style="color:var(--crema)">Caribe Austral</strong> · José Manuel Simons<br>
-    Punta Arenas, Chile · <a href="https://www.instagram.com/josemanuelsimons" target="_blank">@josemanuelsimons</a>
-    · <a href="https://www.anteroslegal.cl" target="_blank">anteroslegal.cl</a><br>
-    <span style="opacity:.4">© 2026 · Todos los derechos reservados</span>
-  </p>
+<section class="tramo tramo--blanco" data-tono="claro" aria-labelledby="anteros-col-titulo">
+  <div class="ancho">
+    <div class="encabezado">
+      <h2 class="h2" id="anteros-col-titulo">En Anteros Legal</h2>
+      <p class="entrada suave">Donde escribo sobre derecho migratorio, la Antártica y la región.</p>
+    </div>
+    <ul class="otras-columnas">
+<li><a href="https://anteroslegal.cl/columnas.html#2048-no-llega-en-2048" rel="noopener"><b>2048 no llega en 2048</b><span class="externo">Antártica y región</span></a></li>
+<li><a href="https://anteroslegal.cl/columnas.html#regularizacion-derecho-o-privilegio" rel="noopener"><b>Regularización migratoria en Chile: ¿derecho humano o privilegio político?</b><span class="externo">Política migratoria</span></a></li>
+<li><a href="https://anteroslegal.cl/columnas.html#paradoja-del-migrante" rel="noopener"><b>La paradoja del migrante: mano de obra esencial, derechos invisibles</b><span class="externo">Economía y trabajo</span></a></li>
+<li><a href="https://anteroslegal.cl/columnas.html#ninez-migrante-haitiana" rel="noopener"><b>Niñez haitiana: los invisibles que el sistema dejó de mirar</b><span class="externo">Niñez y derechos</span></a></li>
+    </ul>
+  </div>
+</section>
+</main>
+<section class="tramo tramo--austral cierre" id="newsletter" data-tono="oscuro" aria-labelledby="cierre-titulo">
+  <div class="ancho cierre__fila">
+    <div>
+      <p class="suave">Punta Arenas, 53°10′S</p>
+      <h2 class="titular" id="cierre-titulo">Desde el fin del mundo, empieza todo.</h2>
+    </div>
+    <div class="suscripcion">
+        <p class="suscripcion__intro">Recibe el newsletter de Caribe Austral y el capítulo 1 del Cuaderno de Frontera, gratis.</p>
+        <form novalidate>
+          <label for="cierre-nombre"><span class="sr-only">Tu nombre</span>
+            <input id="cierre-nombre" name="nombre" type="text" autocomplete="given-name" placeholder="Tu nombre" required></label>
+          <label for="cierre-email"><span class="sr-only">Tu correo</span>
+            <input id="cierre-email" name="email" type="email" autocomplete="email" placeholder="Tu correo" required></label>
+          <button class="boton" type="submit">Quiero el capítulo 1</button>
+        </form>
+        <p class="suscripcion__error" role="alert" aria-live="polite"></p>
+        <p class="suscripcion__nota">Sin spam. Te das de baja con un clic.</p>
+        <p class="suscripcion__ok" role="status" aria-live="polite"></p>
+      </div>
+  </div>
+</section>
+<footer class="pie tramo--hondo" data-tono="oscuro">
+  <div class="ancho">
+    <nav aria-label="Pie de página">
+      <a href="index.html#servicios">Servicios</a>
+      <a href="columnas.html">Columnas</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="mapa/">El mapa</a>
+      <a class="externo" href="https://anteroslegal.cl/" rel="noopener">Anteros Legal</a>
+      <a class="externo" href="https://www.instagram.com/josemanuelsimons" rel="noopener">Instagram</a>
+      <a href="mailto:josemanuelsimons@gmail.com">josemanuelsimons@gmail.com</a>
+    </nav>
+    <p class="pie__coordenada">Caribe Austral, José Manuel Simons. Punta Arenas, Chile.</p>
+  </div>
 </footer>
 
-<script>
-/* CURSOR */
-const cursor = document.getElementById('cursor');
-const icons = ['🌴','❄️'];
-let idx = 0, t;
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top  = e.clientY + 'px';
-  cursor.style.opacity = '1';
-  clearTimeout(t);
-  t = setTimeout(() => { idx = (idx+1)%2; cursor.textContent = icons[idx]; }, 2000);
-});
-document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
-document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
-</script>
+</div>
+<script src="assets/site.js?v=20261124" defer></script>
 </body>
 </html>
