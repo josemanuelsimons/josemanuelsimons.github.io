@@ -1,8 +1,14 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>Mapa Caribe Austral</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Mapa Caribe Austral</title>
+<meta name="description" content="Un viaje interactivo del Mar Caribe al Estrecho de Magallanes: preguntas, palabras, estrellas y flores escondidas. Caribe Austral, de José Manuel Simons.">
+<meta name="theme-color" content="#1e2d42">
+<meta property="og:title" content="Mapa Caribe Austral">
+<meta property="og:description" content="Del Mar Caribe al Estrecho de Magallanes. Baja y el mapa baja contigo.">
+<meta property="og:image" content="https://josemanuelsimons.github.io/img/og/inicio.jpg">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/fuentes.css?v=20261124b">
+</head><body>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+
 <style>
 @property --live { syntax: '<color>'; inherits: true; initial-value: #D9531E; }
 :root{
@@ -35,9 +41,9 @@
   --spine-ink:#F2F5F1;
   --shadow:0 1px 2px rgba(19,33,43,.06), 0 10px 28px rgba(19,33,43,.07);
   --live:var(--fuego);
-  --font-display:"Bodoni Moda","Bodoni 72","Didot",Georgia,serif;
-  --font-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --font-display:"Cormorant Garamond","Bodoni 72","Didot",Georgia,serif;
+  --font-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:Menlo,ui-monospace,"SFMono-Regular",Menlo,monospace;
   --font-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
   --hud-h:52px;
   --r:10px;
@@ -466,11 +472,126 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ================================================================
+   v6 · Inmersivo. Paleta y tipografía oficiales de Caribe Austral
+   (Guía de Tono v1.0). El mapa ocupa toda la pantalla y la cámara
+   sigue el viaje; las estaciones flotan encima.
+   ================================================================ */
+:root:root:root, :root:root:root:not([data-theme="light"]), :root:root:root[data-theme="dark"] {
+  --paper:#25324a; --card:#1e2d42; --ink:#ffffff; --ink-2:#d6dfe9; --muted:#a5b7ca;
+  --hair:rgba(165,183,202,.24); --hair-2:rgba(165,183,202,.12);
+  --sea:#1a2639; --land:#2a3d55; --coast:#6b7d93; --grat:rgba(165,183,202,.16);
+  --fuego:#c9a96e; --cauce:#a5b7ca; --tierra:#9d6d5c;
+  --sky:#1a2639; --sky-2:#2a3d55; --sky-ink:#ffffff; --sky-muted:#a5b7ca; --star:#ffffff;
+  --mark:rgba(201,169,110,.32); --pencil:#a5b7ca; --moon-lit:#c9a96e; --moon-dark:#2a3d55;
+  --river-wash:rgba(165,183,202,.16);
+  --shadow:0 18px 40px rgba(10,16,28,.35);
+  --font-display:"Cormorant Garamond","Cormorant",Garamond,Georgia,serif;
+  --font-body:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --font-hand:"Cormorant Garamond",Georgia,serif;
+  --sitio-h:64px;
+  color-scheme:dark;
+}
+body{background:var(--sea);color:var(--ink)}
+body::before{background:var(--card)}
+h1,h2,h3,h4{font-weight:400;letter-spacing:0;font-variant-numeric:lining-nums}
+.eyebrow{text-transform:none;letter-spacing:.02em;color:var(--fuego)}
+.tag{text-transform:none;letter-spacing:.02em}
+
+/* ---- Cabecera del sitio ---- */
+.ca-sitio{position:relative;z-index:31;display:flex;align-items:center;gap:22px;height:var(--sitio-h);padding:0 max(16px,4vw);background:var(--card);border-bottom:1px solid var(--hair)}
+.ca-marca{display:grid;line-height:1;text-decoration:none;margin-right:auto}
+.ca-marca b{font-family:var(--font-display);font-weight:500;font-size:1.55rem;color:#fff}
+.ca-marca span{font-size:.75rem;color:var(--muted);margin-top:4px}
+.ca-links{display:flex;gap:22px}
+.ca-links a{text-decoration:none;font-size:.95rem;color:#e9eef4}
+.ca-links a:hover{color:var(--fuego)}
+.ca-cta{display:inline-flex;align-items:center;padding:.65rem 1rem;background:var(--fuego);color:#25324a;font-weight:600;font-size:.88rem;text-decoration:none;border-radius:2px}
+.ca-cta:hover{background:#d6bb86}
+@media (max-width:760px){.ca-links{display:none}.ca-marca span{display:none}}
+
+/* ---- HUD ---- */
+.hud{background:rgba(30,45,66,.82)!important;border-bottom:1px solid var(--hair)!important}
+.hud-brand{display:inline-flex!important;align-items:center;gap:6px;font-family:var(--font-body)!important;font-weight:500!important;font-size:.86rem!important;color:var(--fuego)!important}
+.hud-coord{color:var(--fuego)}
+.hud-tramo{border-color:var(--hair)}
+.hud-btn{background:transparent;border-color:var(--hair);color:#fff}
+.hud-btn:hover{border-color:var(--fuego)}
+@media (max-width:640px){.hud-brand .brand-txt{display:none}}
+
+/* ---- Escenario: el mapa a pantalla completa ---- */
+.layout{display:block!important;max-width:none!important;padding:0!important;margin:0!important}
+.mapcol{position:fixed!important;inset:0 auto auto 0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-height:none!important;padding:0!important;margin:0!important;z-index:0;grid-area:auto!important}
+.mapbox{height:100%!important;border:0!important;border-radius:0!important;background:var(--sea)!important}
+.map{position:absolute!important;inset:0;width:100%!important;height:100%!important;min-height:0!important}
+.map-read{position:absolute;left:max(16px,2vw);bottom:max(16px,2vh);z-index:3;background:rgba(30,45,66,.86)!important;border:1px solid var(--hair)!important;backdrop-filter:blur(6px);color:#fff}
+.map-read .mono{color:var(--fuego)}
+.velo{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(26,38,57,0) 0%,rgba(26,38,57,0) 42%,rgba(26,38,57,.55) 62%,rgba(26,38,57,.82) 100%)}
+#ambiente{position:fixed;inset:0;z-index:1;pointer-events:none;width:100%;height:100%}
+@media (max-width:999px){.velo{background:linear-gradient(180deg,rgba(26,38,57,0) 0%,rgba(26,38,57,0) 45%,rgba(26,38,57,.5) 100%)}}
+
+/* Texto del mapa en unidades del mapa: la cámara hace el zoom */
+.map text{font-size:3.6px!important;fill:#a5b7ca}
+.map .m-st text{font-size:3.4px!important;fill:#ffffff;font-family:var(--font-body)}
+.map .m-you text{font-size:3.6px!important;fill:#ffffff}
+.map .m-ocean{font-size:7px!important;fill:rgba(165,183,202,.55);font-family:var(--font-display)}
+.map .m-gl{font-size:2.8px!important;fill:rgba(165,183,202,.6)}
+.m-land{stroke-width:1px!important;vector-effect:non-scaling-stroke}
+.m-seg{stroke-width:3px!important;vector-effect:non-scaling-stroke}
+.m-st circle{fill:var(--sea);stroke-width:2px!important;vector-effect:non-scaling-stroke}
+.m-dot{stroke:#1a2639;stroke-width:2px!important;vector-effect:non-scaling-stroke}
+.m-pulse{stroke-width:1.5px!important;vector-effect:non-scaling-stroke}
+.m-you circle{stroke:#fff;stroke-width:1.5px!important;vector-effect:non-scaling-stroke}
+.m-lm circle{fill:#a5b7ca}
+
+/* ---- Estaciones flotando sobre el mapa ---- */
+.hero,.journey{position:relative;z-index:2}
+.hero{width:min(600px,calc(100% - 32px));margin:0 max(16px,4vw) 0 auto!important;padding:16vh 0 40vh!important;text-shadow:0 2px 24px rgba(10,16,28,.6)}
+.hero .eyebrow{color:var(--fuego)}
+.hero h1{font-size:clamp(3.6rem,8vw,6.6rem)!important;font-weight:300!important;line-height:.95!important;letter-spacing:-.01em!important}
+.hero h1 em{font-weight:300!important;color:var(--fuego)}
+.thesis p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.85rem);line-height:1.25;color:#fff}
+.thesis cite{color:var(--muted)}
+.lede{color:#e9eef4;font-size:1.1rem;max-width:40ch}
+.hero .umbral,.hero .legend3,.hero .flor-help{text-shadow:none}
+.umbral{background:rgba(30,45,66,.9)!important;border:1px solid var(--hair)!important;backdrop-filter:blur(8px)}
+.journey > section{width:min(600px,calc(100% - 32px));margin:0 max(16px,4vw) 62vh auto!important;padding:clamp(22px,3vw,34px)!important;background:rgba(30,45,66,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--hair)!important;border-radius:3px;box-shadow:var(--shadow)}
+.journey > section .wrap{max-width:none}
+.journey > section.tramo-head{background:transparent;border:0!important;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0 0 4vh!important;margin-bottom:52vh!important;text-shadow:0 2px 30px rgba(10,16,28,.75)}
+.tramo-head h2{font-size:clamp(5rem,13vw,10.5rem)!important;font-weight:300!important;font-style:italic;color:var(--tc)!important;line-height:.9!important}
+.tramo-head .sub{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.1rem)!important;color:#fff}
+.tramo-head .txt{display:none}
+.station h3{font-weight:400!important;font-size:clamp(2.2rem,4vw,3rem)!important}
+.station .intro{color:#d6dfe9;font-size:1.05rem}
+#llegada{margin-bottom:0!important}
+#luz .note{display:none}
+#bitacora,#bitacora + .intro,#moon-today,#lunar,#stops-legend,#stops{display:none!important}
+.panel{background:rgba(26,38,57,.65)!important;border-color:var(--hair)!important}
+.btn{border-radius:2px!important;background:var(--fuego)!important;border-color:var(--fuego)!important;color:#25324a!important}
+.btn.ghost{background:transparent!important;color:#fff!important;border-color:var(--hair)!important}
+.btn.ghost:hover{border-color:var(--fuego)!important}
+.news{background:var(--fuego)!important;color:#25324a!important}
+.news .eyebrow,.news p,.news .news-h{color:#25324a!important}
+.news .btn{background:#25324a!important;border-color:#25324a!important;color:#fff!important}
+@media (max-width:999px){
+  .hero{margin:0 auto!important;padding:52vh 16px 30vh!important;width:100%!important;background:linear-gradient(180deg,transparent 0,transparent 47vh,rgba(26,38,57,.94) 52vh,rgba(26,38,57,.94) calc(100% - 30vh),transparent 100%)}
+  .map-read{display:none!important}
+  .journey > section{margin:0 auto 70vh!important}
+  .journey > section.tramo-head{margin-bottom:62vh!important}
+}
+@media (prefers-reduced-motion:reduce){#ambiente{display:none}}
 </style>
 
+<nav class="ca-sitio" aria-label="Caribe Austral">
+  <a class="ca-marca" href="../index.html"><b>Caribe Austral</b><span>José Manuel Simons</span></a>
+  <div class="ca-links"><a href="../index.html">Inicio</a><a href="../index.html#servicios">Servicios</a><a href="../columnas.html">Columnas</a><a href="../sobre-mi.html">Sobre mí</a></div>
+  <a class="ca-cta" href="../index.html#newsletter">Newsletter</a>
+</nav>
 <header class="hud" id="hud">
   <div class="hud-in">
-    <a class="hud-brand" href="#umbral">Caribe Austral</a>
+    <a class="hud-brand" href="../index.html" title="Volver al inicio de Caribe Austral">←<span class="brand-txt"> Inicio</span></a>
     <div class="hud-read">
       <span class="hud-coord"><span id="hud-lat">12°00′N</span><span class="hud-lon" id="hud-lon"> 66°54′O</span></span>
       <span class="hud-place" id="hud-place">Mar Caribe</span>
@@ -493,17 +614,17 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <p>«El Caribe me dio el fuego. Lo Austral me enseñó dónde, cómo y cuándo encenderlo.»</p>
       <cite>Manifiesto Caribe Austral</cite>
     </blockquote>
-    <p class="lede">Un viaje de 7.256 kilómetros en línea recta, del Mar Caribe al Estrecho de Magallanes, en tres tramos. Baja por la página y el mapa baja contigo. En cada estación hay algo para descubrir, practicar o crear, y lo que escribas queda guardado solo en tu navegador.</p>
+    <p class="lede">7.256 kilómetros del Mar Caribe al Estrecho de Magallanes. Baja y el mapa baja contigo.</p>
     <ol class="legend3" aria-label="Los tres tramos del viaje">
       <li style="--c:var(--fuego)"><b>Fuego</b><span>Encontrar el material</span><em>12°N → 0°</em></li>
       <li style="--c:var(--cauce)"><b>Cauce</b><span>Darle estructura</span><em>0° → 33°S</em></li>
       <li style="--c:var(--tierra)"><b>Territorio</b><span>Ponerla en el mundo</span><em>33°S → 53°S</em></li>
     </ol>
-    <p class="flor-help"><span class="herb-ico" aria-hidden="true"></span><span>Juego aparte: hay seis flores escondidas en el mapa. Tócalas al pasar y su foto se guarda en el Herbario, arriba a la derecha.</span></p>
+    <p class="flor-help"><span class="herb-ico" aria-hidden="true"></span><span>Hay seis flores escondidas en el camino. Róbalas.</span></p>
     <div class="umbral">
       <div>
         <h2>Antes de zarpar, el umbral</h2>
-        <p>El rito del Umbral Austral empieza con un minuto de silencio. Para zarpar alcanza con una respiración larga.</p>
+        <p>Una respiración larga. Después, zarpas.</p>
       </div>
       <button class="hold" id="umbral-btn" type="button" aria-label="Mantén presionado para cruzar el umbral">
         <svg viewBox="0 0 128 128" aria-hidden="true"><circle class="track" cx="64" cy="64" r="60"/><circle class="fill" id="umbral-fill" cx="64" cy="64" r="60"/></svg>
@@ -514,6 +635,8 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
   </section>
 
   <aside class="mapcol" aria-label="Mapa de la ruta">
+    <div class="velo" aria-hidden="true"></div>
+    <canvas id="ambiente" aria-hidden="true"></canvas>
     <div class="mapbox">
       <svg id="map" class="map" viewBox="85 20 350 715" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="map-title">
         <title id="map-title">Ruta del Mar Caribe a Punta Arenas, con las estaciones del viaje</title>
@@ -556,7 +679,7 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow" data-coord="7">07°00′N 67°08′O · Llanos del Orinoco</p>
         <h3>La brújula</h3>
-        <p class="intro">Cinco preguntas para saber en qué tramo del viaje estás. No hay respuestas mejores: hay puntos de partida.</p>
+        <p class="intro">Cinco preguntas. Te dicen en qué tramo estás.</p>
         <form class="quiz" id="quiz" autocomplete="off"></form>
         <div class="result" id="quiz-result" aria-live="polite"></div>
       </div>
@@ -566,13 +689,13 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow" data-coord="2">02°00′N 67°22′O · Amazonía</p>
         <h3>Diccionario austral</h3>
-        <p class="intro">Diez palabras que Caribe Austral redefinió este año, en el formato de sus posts. Toca una para darla vuelta.</p>
+        <p class="intro">Diez palabras redefinidas. Toca una y dale la vuelta.</p>
         <div class="words" id="words"></div>
         <div class="wordsfoot"><button class="flor" type="button" data-flor="nieve" aria-label="Una flor escondida entre las palabras"></button></div>
         <div class="creator">
           <div>
             <h4>Escribe tu palabra</h4>
-            <p class="intro">Mismo formato: la palabra, lo que no es, lo que es y un remate. Guárdala como imagen para tus historias.</p>
+            <p class="intro">Ahora la tuya. Guárdala como imagen.</p>
             <div class="field"><label for="w-palabra">Tu palabra</label><input id="w-palabra" type="text" maxlength="16" autocomplete="off"></div>
             <div class="field"><label for="w-noes">Lo que no es</label><div class="pre"><span>No es</span><input id="w-noes" type="text" maxlength="40" autocomplete="off"></div></div>
             <div class="field"><label for="w-es">Lo que es</label><div class="pre"><span>Es</span><input id="w-es" type="text" maxlength="40" autocomplete="off"></div></div>
@@ -607,14 +730,14 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow" data-coord="-10">10°00′S 67°56′O · Acre y Pando</p>
         <h3>El río de las ocho piedras</h3>
-        <p class="intro">El Cuaderno de Frontera tiene ocho capítulos y cada uno termina en una práctica corta. Cruza el río piedra por piedra; las piedras hechas se tiñen de agua.</p>
+        <p class="intro">Ocho piedras, ocho prácticas del Cuaderno de Frontera. Crúzalo.</p>
         <p class="swipe swipe-rio">Desliza el río hacia los lados para ver las ocho piedras.</p>
       </div>
       <div class="scrollx"><div class="river" id="river"><svg id="river-svg" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true"></svg><button class="flor" type="button" data-flor="grosellero" aria-label="Una flor a la orilla del río" style="left:61%;top:86%"></button></div></div>
       <div class="wrap">
         <div class="tracker"><span class="pips" id="stones-pips"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Prácticas hechas: <b id="stones-count">0 de 8</b></span></div>
         <div class="panel" id="stone-panel" aria-live="polite"></div>
-        <p class="note">El Cuaderno completo, con las hojas imprimibles y el tracker 8/8, está en <a href="https://josemanuelsimons.github.io" target="_blank" rel="noopener">josemanuelsimons.github.io</a>.</p>
+        <p class="note"><a href="https://josemanuelsimons.gumroad.com/l/xqfcqt" rel="noopener">El Cuaderno completo, con las hojas imprimibles: US$15</a></p>
       </div>
     </section>
 
@@ -623,12 +746,12 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
         <p class="eyebrow" data-coord="-23.44">23°26′S 68°35′O · Trópico de Capricornio</p>
         <h3>La biblioteca anotada</h3>
         <p class="quote">«La filosofía no nació en el centro del mundo. Puede nacer también en su extremo.»</p>
-        <p class="intro">En junio, una biblioteca recién inaugurada en Punta Arenas recibió una colección de clásicos subrayados y anotados al margen. Lo marcado no es lo dañado: es lo vivido. Elige un libro, subraya una frase y deja tu nota.</p>
+        <p class="intro">Una biblioteca de Punta Arenas recibió clásicos subrayados al margen. Lo marcado no es lo dañado: es lo vivido. Subraya tú.</p>
         <div class="library">
           <div class="shelf" id="shelf" aria-label="Estante de libros"></div>
           <div class="page" id="page" aria-live="polite"></div>
         </div>
-        <p class="note">La historia de esa donación llega con el newsletter de Caribe Austral.</p>
+        <p class="note">La historia completa llega por el newsletter.</p>
       </div>
     </section>
 
@@ -637,12 +760,12 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
         <p class="eyebrow">33°27′S 70°40′O · Santiago · desvío de la ruta</p>
         <h3>Santiago, la ciudad escuela</h3>
         <p class="quote">«Antes del sur hubo una ciudad. Ahí aprendí a moverme como lobo citadino.»</p>
-        <p class="intro">El límite entre el Cauce y el Territorio está en los 33°S, la latitud de Santiago. No es casualidad: ahí la historia de Caribe Austral tomó forma antes de salir al mundo. Siete años de primer chapuzón en la cultura, trabajos de lo que fuera, estudio, redes, charlas, marchas, un estallido, una pandemia, cosas que terminaron y otras que empezaron, como Anteros Legal y una marca personal.</p>
+        <p class="intro">Siete años de primer chapuzón: trabajos de lo que fuera, estudio, estallido, pandemia. Ahí nacieron Anteros Legal y esta marca.</p>
         <div class="years" id="years" role="list" aria-label="Siete años en Santiago"></div>
         <div class="panel" id="year-panel" aria-live="polite"></div>
         <div class="panel">
           <p class="eyebrow">Tu ciudad escuela</p>
-          <p style="margin-top:6px">Casi todos tenemos una ciudad que nos enseñó antes de llegar adonde estamos. ¿Cuál fue la tuya y qué aprendiste ahí que todavía usas?</p>
+          <p style="margin-top:6px">¿Cuál fue tu ciudad escuela?</p>
           <div class="field"><label for="city-name">Mi ciudad escuela</label><input id="city-name" type="text" maxlength="40" autocomplete="off"></div>
           <div class="field"><label for="city-lesson">Lo que me enseñó</label><textarea id="city-lesson" rows="3" maxlength="240"></textarea></div>
         </div>
@@ -663,7 +786,7 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow" data-coord="-35.5">35°30′S 69°18′O · Norpatagonia</p>
         <h3>Constelación austral</h3>
-        <p class="intro">Diecinueve nombres que Caribe Austral estudia y cita: filósofos, reyes, estrategas y una ciudad. Toca una estrella y luego otra. Si comparten una lección, aparece el hilo. El primero ya está encendido.</p>
+        <p class="intro">Diecinueve nombres. Toca dos estrellas: si comparten una lección, aparece el hilo.</p>
         <p class="swipe">Desliza el cielo hacia los lados para verlo completo.</p>
       </div>
       <div class="scrollx" id="sky-scroll"><div class="sky" id="sky"><canvas id="sky-canvas" aria-hidden="true"></canvas><svg id="sky-lines" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"></svg><button class="flor" type="button" data-flor="jacinto_blanco" aria-label="Una flor en el horizonte" style="left:4%;top:94%"></button></div></div>
@@ -679,7 +802,7 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow" data-coord="-45">45°00′S 70°03′O · Estepa patagónica</p>
         <h3>La luz del sur</h3>
-        <p class="intro">En el Caribe el día dura casi lo mismo todo el año. En el sur la luz se gana y se pierde: en diciembre casi no hay noche, en junio casi no hay día.</p>
+        <p class="intro">En el Caribe el día casi no cambia. En el sur, la luz se gana y se pierde.</p>
         <dl class="facts" id="luz-facts"></dl>
         <div class="chartcard">
           <h4 id="luz-title">Horas de luz</h4>
@@ -695,7 +818,7 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow">53°10′S 70°55′O · Punta Arenas</p>
         <h3>Lo que trajimos</h3>
-        <p class="intro">El 18 de diciembre, Punta Arenas cumple 178 años y es el Día Internacional del Migrante. A esta ciudad la hicieron quienes llegaron: chilotes, croatas, españoles; hoy, venezolanos, colombianos, bolivianos. El viaje termina con una sola pregunta.</p>
+        <p class="intro">El 18 de diciembre Punta Arenas cumple 178 años. La hicieron los que llegaron.</p>
         <p class="question">¿Qué trajiste, tú o los tuyos, que el sur no pudo borrar?</p>
         <div class="trajimos">
           <div>
@@ -723,11 +846,11 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <div class="wrap">
         <p class="eyebrow">53°10′S 70°55′O · 7.256 km recorridos</p>
         <h2 style="font-size:clamp(2.6rem,6vw,4rem);margin-top:10px;font-style:italic;font-weight:500">Llegaste</h2>
-        <p class="intro">Esto es lo que juntaste en el viaje. Queda guardado en este navegador y nadie más lo ve.</p>
+        <p class="intro">Lo que juntaste. Solo lo ves tú.</p>
         <dl class="stats" id="stats"></dl>
 
         <h3 class="subhead">Patrones del mapa</h3>
-        <p class="intro">Cosas que se repiten cuando unes las estaciones. Se encienden mientras juegas.</p>
+        <p class="intro">Se encienden mientras juegas.</p>
         <div class="patterns" id="patterns"></div>
 
         <h3 class="subhead" id="bitacora">Próximas paradas</h3>
@@ -740,15 +863,15 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
         <div class="panel news">
           <p class="eyebrow">El viaje sigue por correo</p>
           <h3 class="news-h">Caribe Austral, el newsletter</h3>
-          <p>Las historias detrás de este mapa, el Cuaderno de Frontera, la donación de la biblioteca y lo que se viene el 18 de diciembre. Llega a tu correo, sin ruido.</p>
-          <div class="actions"><a class="btn" href="../#suscribirse">Suscribirme al newsletter</a></div>
+          <p>Una carta desde el fin del mundo, con las historias detrás de este mapa.</p>
+          <div class="actions"><a class="btn" href="../index.html#newsletter">Suscribirme al newsletter</a></div>
         </div>
 
         <div class="reset" id="reset"><button class="btn ghost" id="reset-btn" type="button">Empezar el viaje de nuevo</button></div>
       </div>
       <footer class="foot wrap">
         <b>Caribe Austral</b>
-        <span>Punta Arenas, 53°10′S · <a href="https://josemanuelsimons.github.io" target="_blank" rel="noopener">josemanuelsimons.github.io</a></span>
+        <span>Punta Arenas, 53°10′S · <a href="../index.html">Volver al inicio</a></span>
         <span>Costas del mapa: Natural Earth, dominio público. Fotos de las flores: José Manuel Simons.</span>
       </footer>
     </section>
@@ -761,7 +884,7 @@ dialog.herb::backdrop{background:rgba(6,14,21,.55)}
       <p class="eyebrow">Herbario · <span id="herb-count">0 de 6</span></p>
       <h2 id="herb-title">Herbario del ladrón de flores</h2>
       <p>Primavera en Punta Arenas. Seis flores sacadas de jardines ajenos, más allá de lo que debería, y escondidas en este mapa. Identificación a ojo de ladrón, no de botánico.</p>
-      <p class="herb-how"><b>Cómo se juega:</b> mientras recorres el mapa, busca este ícono <span class="herb-ico" aria-hidden="true"></span> escondido en las estaciones. Tócalo para robar la flor: aquí aparece su foto real y su historia. Cada tarjeta vacía te da una pista de dónde buscar.</p>
+      <p class="herb-how">Busca el ícono en las estaciones y tócalo. Cada tarjeta vacía te da una pista.</p>
     </div>
     <button class="btn ghost" id="herb-close" type="button">Cerrar</button>
   </div>
@@ -1227,7 +1350,7 @@ function drawStarfield(){
   var dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
   var ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
   var seed = 7; var rnd = function(){ seed = (seed*16807) % 2147483647; return seed/2147483647; };
-  ctx.fillStyle = '#F5F8F9';
+  ctx.fillStyle = '#ffffff';
   for(var i = 0; i < 230; i++){ var x = rnd()*w, y = rnd()*h*0.92, big = rnd() > 0.93, r = big ? rnd()*1.1 + 0.7 : rnd()*0.8 + 0.2; ctx.globalAlpha = 0.18 + rnd()*0.55; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill(); }
   ctx.globalAlpha = 1; ctx.fillStyle = 'rgba(0,0,0,0.38)'; ctx.beginPath(); ctx.moveTo(0, h);
   var pts = [[0,0.955],[0.08,0.94],[0.16,0.95],[0.24,0.925],[0.3,0.94],[0.42,0.948],[0.55,0.93],[0.63,0.945],[0.74,0.92],[0.82,0.94],[0.9,0.935],[1,0.95]];
@@ -1359,43 +1482,43 @@ function setupTrajimos(){
 function paintStory(){ var v = cardVals(); $('#tp-resp').textContent = v.resp.trim() || '…'; $('#tp-desde').textContent = v.desde.trim() ? '— desde ' + v.desde.trim() : ''; $('#t-example').hidden = !!(S.card && S.card.edited); }
 
 /* ---------- Tarjetas descargables ---------- */
-function fontsReady(){ if(!document.fonts || !document.fonts.load) return Promise.resolve(); return Promise.all(['600 120px "Bodoni Moda"', 'italic 500 60px "Bodoni Moda"', '500 48px "Hanken Grotesk"', '400 28px "DM Mono"'].map(function(f){ return document.fonts.load(f).catch(function(){}); })).catch(function(){}); }
+function fontsReady(){ if(!document.fonts || !document.fonts.load) return Promise.resolve(); return Promise.all(['600 120px "Cormorant Garamond"', 'italic 500 60px "Cormorant Garamond"', '500 48px "DM Sans"', '400 28px Menlo'].map(function(f){ return document.fonts.load(f).catch(function(){}); })).catch(function(){}); }
 function wrapLines(ctx, text, maxW){ var words = String(text).split(/\s+/).filter(Boolean), lines = [], line = ''; words.forEach(function(w){ var t = line ? line + ' ' + w : w; if(ctx.measureText(t).width > maxW && line){ lines.push(line); line = w; } else line = t; }); if(line) lines.push(line); return lines; }
 function baseCard(W, H, head){
   var c = document.createElement('canvas'); c.width = W; c.height = H; var x = c.getContext('2d');
-  var g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#0B1722'); g.addColorStop(1, '#17324D'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  var g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1e2d42'); g.addColorStop(1, '#25324a'); x.fillStyle = g; x.fillRect(0, 0, W, H);
   var seed = 11; var rnd = function(){ seed = (seed*16807) % 2147483647; return seed/2147483647; };
-  x.fillStyle = '#F5F8F9'; for(var i = 0; i < 110; i++){ x.globalAlpha = 0.12 + rnd()*0.4; x.beginPath(); x.arc(rnd()*W, rnd()*H*0.6, rnd()*1.7 + 0.4, 0, Math.PI*2); x.fill(); } x.globalAlpha = 1;
+  x.fillStyle = '#ffffff'; for(var i = 0; i < 110; i++){ x.globalAlpha = 0.12 + rnd()*0.4; x.beginPath(); x.arc(rnd()*W, rnd()*H*0.6, rnd()*1.7 + 0.4, 0, Math.PI*2); x.fill(); } x.globalAlpha = 1;
   var rx = W - 84, top = 150, bot = H - 150;
-  [['#E0622C', 0, 0.184], ['#3987E5', 0.184, 0.691], ['#3C9A4A', 0.691, 1]].forEach(function(s){ x.strokeStyle = s[0]; x.lineWidth = 5; x.lineCap = 'round'; x.beginPath(); x.moveTo(rx, top + (bot - top)*s[1] + (s[1] ? 7 : 0)); x.lineTo(rx, top + (bot - top)*s[2] - (s[2] < 1 ? 7 : 0)); x.stroke(); });
-  x.fillStyle = '#F5F8F9'; x.beginPath(); x.arc(rx, bot, 10, 0, Math.PI*2); x.fill();
-  x.font = '400 22px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.textAlign = 'right'; x.fillText('12°N', rx - 20, top + 8); x.fillText('53°S', rx - 20, bot + 8); x.textAlign = 'left';
-  x.font = '400 28px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.fillText(head, 84, 118);
+  [['#c9a96e', 0, 0.184], ['#a5b7ca', 0.184, 0.691], ['#9d6d5c', 0.691, 1]].forEach(function(s){ x.strokeStyle = s[0]; x.lineWidth = 5; x.lineCap = 'round'; x.beginPath(); x.moveTo(rx, top + (bot - top)*s[1] + (s[1] ? 7 : 0)); x.lineTo(rx, top + (bot - top)*s[2] - (s[2] < 1 ? 7 : 0)); x.stroke(); });
+  x.fillStyle = '#ffffff'; x.beginPath(); x.arc(rx, bot, 10, 0, Math.PI*2); x.fill();
+  x.font = '400 22px Menlo'; x.fillStyle = '#a5b7ca'; x.textAlign = 'right'; x.fillText('12°N', rx - 20, top + 8); x.fillText('53°S', rx - 20, bot + 8); x.textAlign = 'left';
+  x.font = '400 28px Menlo'; x.fillStyle = '#a5b7ca'; x.fillText(head, 84, 118);
   return {c: c, x: x};
 }
 function drawWordCard(v){ return fontsReady().then(function(){
   var W = 1080, H = 1350, b = baseCard(W, H, 'CARIBE AUSTRAL'), x = b.x, w = wordParts(v), maxW = W - 84 - 200, size = 150;
-  x.font = '600 ' + size + 'px "Bodoni Moda"'; while(x.measureText(w.p + '.').width > maxW && size > 56){ size -= 6; x.font = '600 ' + size + 'px "Bodoni Moda"'; }
-  x.fillStyle = '#F5F8F9'; var y = 560; x.fillText(w.p + '.', 84, y); y += 96;
-  x.font = '500 52px "Hanken Grotesk"'; x.fillStyle = '#E2EAEE'; w.l.forEach(function(line){ wrapLines(x, line, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 66; }); });
-  y += 26; x.font = 'italic 500 48px "Bodoni Moda"'; x.fillStyle = '#F0A27E'; wrapLines(x, w.r, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 60; });
-  x.font = '400 24px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.fillText('DICCIONARIO AUSTRAL · TU PALABRA', 84, H - 100);
+  x.font = '600 ' + size + 'px "Cormorant Garamond"'; while(x.measureText(w.p + '.').width > maxW && size > 56){ size -= 6; x.font = '600 ' + size + 'px "Cormorant Garamond"'; }
+  x.fillStyle = '#ffffff'; var y = 560; x.fillText(w.p + '.', 84, y); y += 96;
+  x.font = '500 52px "DM Sans"'; x.fillStyle = '#ffffff'; w.l.forEach(function(line){ wrapLines(x, line, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 66; }); });
+  y += 26; x.font = 'italic 500 48px "Cormorant Garamond"'; x.fillStyle = '#c9a96e'; wrapLines(x, w.r, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 60; });
+  x.font = '400 24px Menlo'; x.fillStyle = '#a5b7ca'; x.fillText('DICCIONARIO AUSTRAL · TU PALABRA', 84, H - 100);
   return b.c; }); }
 function drawManifestoCard(v){ return fontsReady().then(function(){
   var W = 1080, H = 1350, b = baseCard(W, H, 'MI MINI-MANIFIESTO'), x = b.x, maxW = W - 84 - 200, y = 560;
-  x.font = '600 70px "Bodoni Moda"'; x.fillStyle = '#F5F8F9'; wrapLines(x, v.a, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 84; });
-  y += 40; x.font = 'italic 500 56px "Bodoni Moda"'; x.fillStyle = '#F0A27E'; wrapLines(x, v.b, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 70; });
-  x.font = '400 24px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.fillText('CUADERNO DE FRONTERA · CAP. 8 · CARIBE AUSTRAL', 84, H - 100);
+  x.font = '600 70px "Cormorant Garamond"'; x.fillStyle = '#ffffff'; wrapLines(x, v.a, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 84; });
+  y += 40; x.font = 'italic 500 56px "Cormorant Garamond"'; x.fillStyle = '#c9a96e'; wrapLines(x, v.b, maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 70; });
+  x.font = '400 24px Menlo'; x.fillStyle = '#a5b7ca'; x.fillText('CUADERNO DE FRONTERA · CAP. 8 · CARIBE AUSTRAL', 84, H - 100);
   return b.c; }); }
 function drawStoryCard(v){ return fontsReady().then(function(){
   var W = 1080, H = 1920, b = baseCard(W, H, '18 · XII · PUNTA ARENAS 178 AÑOS'), x = b.x, maxW = W - 84 - 200;
-  x.font = '400 28px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.fillText('DÍA INTERNACIONAL DEL MIGRANTE', 84, 164);
-  x.font = 'italic 500 52px "Bodoni Moda"'; x.fillStyle = '#B9C8CF'; var y = 430; wrapLines(x, '¿Qué trajiste, tú o los tuyos, que el sur no pudo borrar?', maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 66; });
-  y += 80; var ans = String(v.resp || '').trim() || '…', size = 84; x.font = '600 ' + size + 'px "Bodoni Moda"'; var lines = wrapLines(x, ans, maxW);
-  while(lines.length > 8 && size > 48){ size -= 6; x.font = '600 ' + size + 'px "Bodoni Moda"'; lines = wrapLines(x, ans, maxW); }
-  x.fillStyle = '#F5F8F9'; lines.forEach(function(ln){ x.fillText(ln, 84, y); y += size*1.18; });
-  if(String(v.desde || '').trim()){ y += 34; x.font = '500 46px "Hanken Grotesk"'; x.fillStyle = '#E2EAEE'; x.fillText('— desde ' + String(v.desde).trim(), 84, y); }
-  x.font = '400 24px "DM Mono"'; x.fillStyle = '#9DB0BB'; x.fillText('LO QUE TRAJIMOS · 53°10′S 70°55′O · CARIBE AUSTRAL', 84, H - 100);
+  x.font = '400 28px Menlo'; x.fillStyle = '#a5b7ca'; x.fillText('DÍA INTERNACIONAL DEL MIGRANTE', 84, 164);
+  x.font = 'italic 500 52px "Cormorant Garamond"'; x.fillStyle = '#a5b7ca'; var y = 430; wrapLines(x, '¿Qué trajiste, tú o los tuyos, que el sur no pudo borrar?', maxW).forEach(function(ln){ x.fillText(ln, 84, y); y += 66; });
+  y += 80; var ans = String(v.resp || '').trim() || '…', size = 84; x.font = '600 ' + size + 'px "Cormorant Garamond"'; var lines = wrapLines(x, ans, maxW);
+  while(lines.length > 8 && size > 48){ size -= 6; x.font = '600 ' + size + 'px "Cormorant Garamond"'; lines = wrapLines(x, ans, maxW); }
+  x.fillStyle = '#ffffff'; lines.forEach(function(ln){ x.fillText(ln, 84, y); y += size*1.18; });
+  if(String(v.desde || '').trim()){ y += 34; x.font = '500 46px "DM Sans"'; x.fillStyle = '#ffffff'; x.fillText('— desde ' + String(v.desde).trim(), 84, y); }
+  x.font = '400 24px Menlo'; x.fillStyle = '#a5b7ca'; x.fillText('LO QUE TRAJIMOS · 53°10′S 70°55′O · CARIBE AUSTRAL', 84, H - 100);
   return b.c; }); }
 var dlP = null;
 function getDownloads(){ if(!dlP){ dlP = (window.claude && typeof window.claude.use === 'function') ? Promise.resolve(window.claude.use('downloads')).catch(function(){ return null; }) : Promise.resolve(null); } return dlP; }
@@ -1536,6 +1659,131 @@ function setupHud(){
 function safe(fn){ try { fn(); } catch(e) { if(window.console) console.error(e); } }
 safe(buildMap); safe(setupUmbral); safe(buildQuiz); safe(renderQuiz); safe(buildWords); safe(setupWordCreator); safe(buildRiver); safe(buildShelf); safe(buildSky); safe(setupLuz); safe(setupSantiago); safe(setupTrajimos); safe(function(){ $$('.herb-ico').forEach(function(e){ e.innerHTML = FLOWER_SVG; }); }); safe(setupFlowers); safe(renderHerb); safe(renderStops); safe(updateCounters); safe(renderSummary); safe(setupReset); safe(setupHud);
 safe(update);
+})();
+</script>
+<script>
+/* v6 · Cámara que sigue el viaje y clima por latitud (brasas en el Caribe, nieve en el Austral). */
+(function(){
+'use strict';
+var svg = document.getElementById('map');
+var here = document.getElementById('m-here');
+if(!svg || !here) return;
+var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+
+/* marcadores más finos: con zoom, los radios originales quedan grandes */
+var dot = here.querySelector('.m-dot'), pulse = here.querySelector('.m-pulse');
+if(dot) dot.setAttribute('r', '2.4');
+if(pulse) pulse.setAttribute('r', '4.2');
+var you = document.querySelector('#m-you circle'); if(you) you.setAttribute('r', '3.6');
+var youT = document.querySelector('#m-you text'); if(youT){ youT.setAttribute('x', '-6'); youT.setAttribute('y', '1.4'); }
+function afinarEstaciones(){
+  document.querySelectorAll('.m-st circle').forEach(function(c){ c.setAttribute('r', '1.9'); });
+  document.querySelectorAll('.m-lm circle').forEach(function(c){ c.setAttribute('r', '1'); });
+  document.querySelectorAll('.m-st text').forEach(function(t){
+    var x = parseFloat(t.getAttribute('x')), anchor = t.getAttribute('text-anchor');
+    var cx = parseFloat(t.parentNode.querySelector('circle').getAttribute('cx'));
+    t.setAttribute('x', anchor === 'end' ? cx - 4 : cx + 4);
+    t.setAttribute('y', parseFloat(t.parentNode.querySelector('circle').getAttribute('cy')) + 1.2);
+  });
+  document.querySelectorAll('.m-lm text').forEach(function(t){
+    var c = t.parentNode.querySelector('circle');
+    t.setAttribute('x', parseFloat(c.getAttribute('cx')) - 3); t.setAttribute('y', parseFloat(c.getAttribute('cy')) + 1.2);
+  });
+}
+afinarEstaciones();
+
+function ease(t){ return t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2; }
+function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+function marcador(){
+  var m = /translate\(\s*([-\d.]+)[ ,]+([-\d.]+)\s*\)/.exec(here.getAttribute('transform') || '');
+  return m ? [parseFloat(m[1]), parseFloat(m[2])] : [281, 50];
+}
+var RUTA_C = [262, 390]; /* centro aproximado de la ruta completa */
+var cam = null;
+function objetivo(){
+  var W = svg.clientWidth || window.innerWidth, H = svg.clientHeight || window.innerHeight;
+  var desk = W >= 1000;
+  var se = document.scrollingElement || document.documentElement;
+  var top = se.scrollTop, max = Math.max(1, se.scrollHeight - window.innerHeight);
+  var acerca = ease(clamp(top/(window.innerHeight*0.85), 0, 1));             /* al empezar: del continente al detalle */
+  var aleja = ease(clamp((top - (max - window.innerHeight*1.4))/(window.innerHeight*1.4), 0, 1)); /* al llegar: el viaje entero */
+  var k = acerca*(1 - aleja);
+  var cerca = desk ? 190 : 150, lejos = desk ? 780 : 860;
+  var vh = lejos + (cerca - lejos)*k, vw = vh*W/H;
+  var p = marcador();
+  var cx = RUTA_C[0] + (p[0] - RUTA_C[0])*k, cy = RUTA_C[1] + (p[1] - RUTA_C[1])*k;
+  var fx = desk ? 0.3 : 0.5, fy = desk ? 0.5 : 0.3;
+  return [cx - fx*vw, cy - fy*vh, vw, vh];
+}
+function pintar(){
+  var t = objetivo();
+  if(!cam || RM) cam = t.slice();
+  else for(var i = 0; i < 4; i++) cam[i] += (t[i] - cam[i])*0.14;
+  svg.setAttribute('viewBox', cam.map(function(v){ return v.toFixed(2); }).join(' '));
+  return Math.abs(t[0] - cam[0]) + Math.abs(t[1] - cam[1]) + Math.abs(t[2] - cam[2]) > 0.05;
+}
+
+/* ---- Clima por latitud ---- */
+var cv = document.getElementById('ambiente');
+var ctx = cv && cv.getContext ? cv.getContext('2d') : null;
+var parts = [], W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+function medir(){ if(!cv) return; W = cv.clientWidth; H = cv.clientHeight; cv.width = W*DPR; cv.height = H*DPR; if(ctx) ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
+function latActual(){ return 17 - marcador()[1]/10; }
+function pesos(lat){
+  return { fuego: clamp(lat/9, 0, 1), nieve: clamp((-lat - 30)/14, 0, 1) };
+}
+function nacer(p, arriba){
+  var w = pesos(latActual()), r = Math.random()*(w.fuego + w.nieve + 0.0001);
+  p.tipo = (w.fuego + w.nieve) < 0.05 ? 'nada' : (r < w.fuego ? 'brasa' : 'copo');
+  p.x = Math.random()*W;
+  if(p.tipo === 'brasa'){ p.y = arriba ? Math.random()*H : H + 10; p.vy = -(0.25 + Math.random()*0.6); p.vx = (Math.random() - .5)*0.25; p.r = 0.8 + Math.random()*1.8; p.a = 0.25 + Math.random()*0.5; }
+  else { p.y = arriba ? Math.random()*H : -10; p.vy = 0.35 + Math.random()*0.9; p.vx = 0.2 + Math.random()*0.5; p.r = 0.8 + Math.random()*2.2; p.a = 0.35 + Math.random()*0.5; }
+  p.f = Math.random()*Math.PI*2;
+  return p;
+}
+function iniciarClima(){
+  if(!ctx || RM) return false;
+  medir();
+  var n = W < 700 ? 45 : 90;
+  for(var i = 0; i < n; i++) parts.push(nacer({}, true));
+  return true;
+}
+function clima(){
+  if(!ctx) return;
+  ctx.clearRect(0, 0, W, H);
+  var w = pesos(latActual());
+  for(var i = 0; i < parts.length; i++){
+    var p = parts[i];
+    p.f += 0.03;
+    if(p.tipo === 'brasa'){
+      p.x += p.vx + Math.sin(p.f)*0.2; p.y += p.vy;
+      ctx.fillStyle = 'rgba(201,169,110,' + (p.a*w.fuego*(0.6 + 0.4*Math.sin(p.f*2))).toFixed(3) + ')';
+    } else if(p.tipo === 'copo'){
+      p.x += p.vx + Math.sin(p.f)*0.35; p.y += p.vy;
+      ctx.fillStyle = 'rgba(235,242,248,' + (p.a*w.nieve).toFixed(3) + ')';
+    }
+    if(p.tipo !== 'nada'){ ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill(); }
+    if(p.y < -20 || p.y > H + 20 || p.x > W + 20 || p.x < -20 || (p.tipo === 'nada' && Math.random() < 0.01)) nacer(p, false);
+  }
+}
+
+var vivo = iniciarClima();
+window.addEventListener('resize', function(){ medir(); cam = null; });
+function ciclo(){
+  pintar();
+  if(vivo) clima();
+  requestAnimationFrame(ciclo);
+}
+if(RM){
+  var pend = false;
+  var una = function(){ pend = false; pintar(); };
+  window.addEventListener('scroll', function(){ if(!pend){ pend = true; requestAnimationFrame(una); } }, {passive: true});
+  if(window.MutationObserver) new MutationObserver(una).observe(here, {attributes: true, attributeFilter: ['transform']});
+  pintar();
+} else {
+  requestAnimationFrame(ciclo);
+}
 })();
 </script>
 </body></html>
